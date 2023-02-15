@@ -1,0 +1,101 @@
+---
+title: "Microbiome analysis"
+output: github_document
+params: 
+date: "2023-02-14"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(phyloseq)
+library(vegan)
+library(collapse)
+library(ggplot2)
+library(RColorBrewer)
+```
+
+## Microbiome analysis
+
+The code below was used for microbiome analysis in the article "Within-host rhinovirus evolution in upper and lower respiratory tract highlights capsid variability and mutation-independent compartmentalization". 
+
+Analysis starts with the BIOM table generated with kraken-biom (https://github.com/smdabdoub/kraken-biom) from the Kraken2 reports of samples underwent metagenomic sequencing. 
+
+```{r BIOM table, include=FALSE}
+BIOM <- import_biom("/Users/greningerlab1/Downloads/HRV-BIOM-files/BIOM.biom")
+BIOM@tax_table@.Data<- substring(BIOM@tax_table@.Data, 4)
+colnames(BIOM@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
+```
+
+##Rarefaction
+Rarefaction normalization is performed to the BIOM table. The rarified curves are plot.
+
+```{r Rarefaction, echo = FALSE}
+BIOMrarefied = rarefy_even_depth(BIOM, rngseed= 151959, sample.size = min(sample_sums(BIOM)), replace = F)
+
+tabRareBIOM <- otu_table(BIOMrarefied)
+class(tabRareBIOM) <- "matrix"
+tabRareBIOM <- t(tabRareBIOM)
+rareBIOM <-rarecurve(tabRareBIOM, step = 10000, lwd=2, ylab = "OTU", label = F)
+```
+
+## Taxonomy analysis
+Rarefied OTU at Genus level are transformed to percentage, taxa without data at Genus column are deleted, abundance below 0.5% are masked under "Genus < 0.5% abund." and rows with the same taxonomy at Genus column are merged.
+
+```{r Taxonomy, echo=FALSE}
+merged_BIOMrare <- subset_taxa(BIOMrarefied, Genus!="") #DELETE TAXA WITHOUT DATA FROM THE GENUS COLUMN
+
+BIOMpercentages <- transform_sample_counts(merged_BIOMrare, function(x) x*100/sum(x)) #PERCENTAGE OF OTUs
+
+BIOMpercentages_glom <- tax_glom(BIOMpercentages, taxrank = "Genus") #MERGE SAME TAXONOMY NAME AT GENUS COLUMN
+
+BIOMpercentages_glom_DF <- psmelt(BIOMpercentages_glom)
+str(BIOMpercentages_glom_DF)
+
+BIOMpercentages_glom_DF$Genus <- as.character(BIOMpercentages_glom_DF$Genus) 
+BIOMpercentages_glom_DF$Genus[BIOMpercentages_glom_DF$Abundance<0.5] <- "Genus < 0.5% abund."
+
+BIOMpercentages_glom_DF_COLL <- collap(BIOMpercentages_glom_DF,~ Genus + Sample, FUN = fsum) #MERGE TAXONOMY ABUNDANCE BELOW 0.5% AT GENUS COLUMN
+
+```
+
+## Improve figure colors
+This code chunk identifies the number of categories to distinguished and applies a contrasting color palette.
+
+```{r Improve Taxonomy figure colors, echo=FALSE}
+
+message("Number of unique taxa to be colored")
+unique(BIOMpercentages_glom_DF$Genus)
+n <- 57 #number of unique taxa to be colored
+qual_col_pals = brewer.pal.info[brewer.pal.info$category== 'qual',]
+col_vector = unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
+
+```
+
+## Taxonomy abundance plot
+The next code creates the plot of taxonommy abundance at Genus level for each sample.
+
+```{r Taxonomy plot, echo=FALSE}
+relative_bacteria_plot <- ggplot(data=BIOMpercentages_glom_DF_COLL, aes(x=Sample, y=Abundance, fill=Genus)) + geom_bar(aes(), stat="identity",position = "stack") + scale_x_discrete(guide = guide_axis(angle = 90)) + theme_minimal() + scale_fill_manual(values = sample(col_vector, n))
+
+relative_bacteria_plot
+```
+
+
+## Beta diversity
+BIOM table is annotated to include information about the sample type, rhinovirus type and sample name. Rarefied OTUs are used to infer the Bray Curtis disimilarity. Ordination plot based on NMDS is performed.
+
+```{r Beta Diversity, echo=FALSE}
+
+BIOMpercentages_glom_VAR <- BIOMpercentages_glom
+annotation_variables <- read.csv("/Users/greningerlab1/Downloads/HRV-BIOM-files/annotation_variables.csv", row.names = 1)
+sample_data(BIOMpercentages_glom_VAR) <- sample(annotation_variables)[,c("Type", "RV", "Label")] 
+
+meta_ord <- ordinate(physeq = BIOMpercentages_glom_VAR, method = "NMDS", distance = "bray") 
+
+betadiversity_plot <- plot_ordination(physeq = BIOMpercentages_glom_VAR, ordination = meta_ord, color = "Type", shape = "RV") + theme_bw() + theme(text=element_text(size = 12)) + geom_text (mapping = aes(label= Label), size = 3, hjust =1.2, vjust=-0.5) + geom_point(size=3) + stat_ellipse()
+
+betadiversity_plot
+```
+
+
+
