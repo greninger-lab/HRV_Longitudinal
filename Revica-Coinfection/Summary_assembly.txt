@@ -1,0 +1,30 @@
+FASTQ accession number	Sample Name	raw reads/pairs	reference accession	reference tag	reference header	reference length	reference num Ns	%ref coverage	median coverage	mapped reads	% quality-filtered reads on target	serotype
+SRR8356918	NW1	772599	MZ667421.1	EV	"Rhinovirus C17 strain HRV, complete genome"	7054	0	99.2	17	1017	0.13	RV-C17
+SRR8356921	BAL1	1254869	MZ667421.1	EV	"Rhinovirus C17 strain HRV, complete genome"	7054	0	98.7	5490	294735	50.12	RV-C17
+SRR8356920	NW2	1037459	MZ438010.1	EV	"Rhinovirus C36 isolate, complete genome"	7019	0	100	69	3516	0.38	RV-C36
+SRR8356912	BAL2	172539	MZ438010.1	EV	"Rhinovirus C36 isolate, complete genome"	7019	0	97.2	130	8241	6.53	RV-C36
+SRR8356913	BAL3	546615	MZ667418.1	EV	"Rhinovirus B97 strain HRV/B97 polyprotein gene, partial cds"	7060	0	98.7	495	73896	38.65	RV-B97
+SRR8356917	NW3	32032	MZ667418.1	EV	"Rhinovirus B97 strain HRV/B97 polyprotein gene, partial cds"	7060	0	99.8	169	7352	30.06	RV-B97
+SRR8356919	NW4	107394	MZ667416.1	EV	"Rhinovirus B strain HRV/B06, complete genome"	7201	0	100	344	20528	24.97	RV-B6
+SRR8356908	BAL4	469843	MZ667416.1	EV	"Rhinovirus B strain HRV/B06, complete genome"	7201	0	100	1432	67681	26.16	RV-B6
+SRR8356930	NW5	234426	FJ445141.1	EV	"Human rhinovirus 57 isolate fs ship#1-hrv-57, complete genome"	7134	0	100	513	24012	15.04	RV-A57
+SRR8356907	BAL5	4190890	FJ445141.1	EV	"Human rhinovirus 57 isolate fs ship#1-hrv-57, complete genome"	7134	0	99.9	111	14707	0.39	RV-A57
+SRR8356929	NW6	202853	MZ542285.1	EV	"Rhinovirus A105 strain NW3 polyprotein gene, partial cds"	6971	0	97.8	1109	70581	50.82	RV-A105
+SRR8356904	BAL6	2574913	MZ542285.1	EV	"Rhinovirus A105 strain NW3 polyprotein gene, partial cds"	6971	0	99.8	227	41972	2.17	RV-A105
+SRR8356909	BAL7a	1875069	MZ667420.1	EV	"Rhinovirus A58 strain HRV/A58 polyprotein gene, partial cds"	7062	0	96.7	23	1091	0.15	RV-A58
+SRR8356914	NW7	48458	MZ667420.1	EV	"Rhinovirus A58 strain HRV/A58 polyprotein gene, partial cds"	7062	0	100	362	15584	44.34	RV-A58
+SRR8356910	BAL7b	1217924	MZ667420.1	EV	"Rhinovirus A58 strain HRV/A58 polyprotein gene, partial cds"	7062	0	99.9	50	3335	0.58	RV-A58
+SRR8356916	NW8	564684	MZ667417.1	EV	"Rhinovirus A78 strain HRV/A78, complete genome"	7135	0	100	98	319805	77.21	RV-A78
+SRR8356905	BAL8	1053241	MZ667417.1	EV	"Rhinovirus A78 strain HRV/A78, complete genome"	7135	0	99.9	5558	5391	0.88	RV-A78
+SRR8356925	BAL9a	1588633	MZ458533.1	EV	"Human rhinovirus AMS323 strain, complete genome"	7059	0	100	25	1420	0.10	RV-A102
+SRR8356926	BAL9b	553697	MZ458533.1	EV	"Human rhinovirus AMS323 strain, complete genome"	7059	0	100	70	6308	1.45	RV-A102
+SRR8356911	BAL10a	761617	MZ667419.1	EV	"Rhinovirus A39 strain HRV/A39, complete genome"	7033	0	100	177	10265	2.52	RV-A39
+SRR8356924	BAL10b	467031	KY474530.1	HMPV	"Human metapneumovirus isolate hMPV/USA/AR002/2016, complete genome"	13321	5	73.1	4	2095	0.52	
+SRR8356924	BAL10b	467031	LC654446.1	HCOV	"Human coronavirus 229E Fukushima_H832_2020 RNA, complete genome"	27267	0	99.4	282	194950	47.94	
+SRR8356924	BAL10b	467031	MZ667419.1	EV	"Rhinovirus A39 strain HRV/A39, complete genome"	7033	0	99.8	99	11968	2.82	RV-A39
+SRR8356906	BAL11a	1556034	MZ667414.1	EV	"Rhinovirus A82 strain HRV/A82, complete genome"	7060	0	97.3	277	3095	0.61	RV-A82
+SRR8356922	BAL11b	370243	MZ667414.1	EV	"Rhinovirus A82 strain HRV/A82, complete genome"	7060	0	100	3643	409139	66.27	RV-A82
+SRR8356915	NW11	107985	MZ667414.1	EV	"Rhinovirus A82 strain HRV/A82, complete genome"	7060	0	97.7	30	238417	65.11	RV-A82
+SRR8356923	BAL11c	638872	MZ667414.1	EV	"Rhinovirus A82 strain HRV/A82, complete genome"	7060	0	100	5548	9446	8.81	RV-A82
+SRR8356927	BAL12b	168268	MZ447875.1	EV	"Rhinovirus C28 strain, complete genome"	7008	0	100	208	15729	10.42	RV-C28
+SRR8356928	BAL12b	113110	MZ447875.1	EV	"Rhinovirus C28 strain, complete genome"	7008	0	99.7	364	32754	32.20	RV-C28
