@@ -1,4 +1,4 @@
-Microbiome_analysis
+# Microbiome_analysis
 
 In this folder you will find the Kraken2 reports for the samples used to the microbiome analysis in the article "Within-host rhinovirus evolution in upper and lower respiratory tract highlights capsid variability and mutation-independent compartmentalization".
 
