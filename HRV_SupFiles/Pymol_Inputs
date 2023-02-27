@@ -1,0 +1,18 @@
+color 0xbf803f,  /1AYM_0001//3/84/CA
+color 0xbf803f,  /1AYM_0001//3/84/
+
+#Download Whole capsid
+
+fetch 1AYM, type=pdb1
+split_states 1AYM
+
+#Select show surface on pymol
+
+#color V regions
+
+color gray80,  ///1//
+color gray60,  ///2//
+color gray40,  ///3//
+color gray20,  ///4//
+
+#run color switcher python script on SASA_Annotated.csv
