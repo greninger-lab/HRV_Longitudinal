@@ -7,4 +7,4 @@ Regions with less than the minimum coverage were called Ns.
 This process was iterated for a total of 3 times to generate a final consensus. Each iteration used the previous consensus as the reference (except the first iteration, which used the initial reference) and the alignment of the trimmed reads to that reference to generate a new consensus. 
 After each iteration, any leading or trailing Ns were removed.
 
-Summary_assembly.txt = Summary of the consensus genomes assembled based on quality-filtered fastq files. 
+Summary_assembly.txt = Summary of the consensus genomes assembled from quality-filtered fastq files based. 
