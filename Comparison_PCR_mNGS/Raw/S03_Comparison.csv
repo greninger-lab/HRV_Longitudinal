@@ -1,0 +1,263 @@
+Sample,Amino Acid Change,Position,AF,Change,Protein,NucleotideChange,LetterChange,Syn,Depth,Passage,NucCorrect,AminoCorrect,MatPeptide
+NW3,polyprotein T28T,635,11.25,T28T,polyprotein,C84T,C to T,synonymous SNV,3911,N10_203B,C84T,T28T,1A: T28T; C84T
+NW3,polyprotein T134T,953,10.45,T134T,polyprotein,G402A,G to A,synonymous SNV,3569,N10_203B,G402A,T134T,1B: T65T; G195A
+NW3,polyprotein D157D,1022,99.71,D157D,polyprotein,T471C,T to C,synonymous SNV,3058,N10_203B,T471C,D157D,1B: D88D; T264C
+NW3,polyprotein N208D,1173,1.07,N208D,polyprotein,A622G,A to G,nonsynonymous SNV,839,N10_203B,A622G,N208D,1B: N139D; A415G
+NW3,polyprotein T228T,1235,8.52,T228T,polyprotein,A684G,A to G,synonymous SNV,1280,N10_203B,A684G,T228T,1B: T159T; A477G
+NW3,polyprotein P400P,1751,1.22,P400P,polyprotein,T1200C,T to C,synonymous SNV,8089,N10_203B,T1200C,P400P,1C: P70P; T210C
+NW3,polyprotein G419D,1807,6.54,G419D,polyprotein,G1256A,G to A,nonsynonymous SNV,7651,N10_203B,G1256A,G419D,1C: G89D; G266A
+NW3,polyprotein V482I,1995,1.07,V482I,polyprotein,G1444A,G to A,nonsynonymous SNV,10676,N10_203B,G1444A,V482I,1C: V152I; G454A
+NW3,polyprotein D509D,2078,1.24,D509D,polyprotein,C1527T,C to T,synonymous SNV,8658,N10_203B,C1527T,D509D,1C: D179D; C537T
+NW3,polyprotein T510I,2080,21.14,T510I,polyprotein,C1529T,C to T,nonsynonymous SNV,8634,N10_203B,C1529T,T510I,1C: T180I; C539T
+NW3,polyprotein G515G,2096,19.97,G515G,polyprotein,C1545T,C to T,synonymous SNV,7777,N10_203B,C1545T,G515G,1C: G185G; C555T
+NW3,polyprotein I541V,2172,1.97,I541V,polyprotein,A1621G,A to G,nonsynonymous SNV,6038,N10_203B,A1621G,I541V,1C: I211V; A631G
+NW3,polyprotein T555T,2216,31.25,T555T,polyprotein,T1665C,T to C,synonymous SNV,5084,N10_203B,T1665C,T555T,1C: T225T; T675C
+NW3,polyprotein V577V,2282,23.11,V577V,polyprotein,C1731T,C to T,synonymous SNV,3141,N10_203B,C1731T,V577V,1D: V11V; C33T
+NW3,polyprotein I584V,2301,1.53,I584V,polyprotein,A1750G,A to G,nonsynonymous SNV,2742,N10_203B,A1750G,I584V,1D: I18V; A52G
+NW3,polyprotein T621T,2414,1.05,T621T,polyprotein,T1863G,T to G,synonymous SNV,666,N10_203B,T1863G,T621T,1D: T55T; T165G
+NW3,polyprotein D647D,2492,18.71,D647D,polyprotein,C1941T,C to T,synonymous SNV,2175,N10_203B,C1941T,D647D,1D: D81D; C243T
+NW3,polyprotein K660K,2531,2.7,K660K,polyprotein,G1980A,G to A,synonymous SNV,2368,N10_203B,G1980A,K660K,1D: K94K; G282A
+NW3,polyprotein N671S,2563,1.44,N671S,polyprotein,A2012G,A to G,nonsynonymous SNV,2497,N10_203B,A2012G,N671S,1D: N105S; A314G
+NW3,polyprotein R689R,2618,12.71,R689R,polyprotein,A2067G,A to G,synonymous SNV,2937,N10_203B,A2067G,R689R,1D: R123R; A369G
+NW3,polyprotein N710N,2681,1.15,N710N,polyprotein,C2130T,C to T,synonymous SNV,3404,N10_203B,C2130T,N710N,1D: N144N; C432T
+NW3,polyprotein S738S,2765,28.81,S738S,polyprotein,A2214G,A to G,synonymous SNV,3754,N10_203B,A2214G,S738S,1D: S172S; A516G
+NW3,polyprotein G747G,2792,5.31,G747G,polyprotein,T2241C,T to C,synonymous SNV,3766,N10_203B,T2241C,G747G,1D: G181G; T543C
+NW3,polyprotein I790M,2921,31.47,I790M,polyprotein,A2370G,A to G,nonsynonymous SNV,3740,N10_203B,A2370G,I790M,1D: I224M; A672G
+NW3,polyprotein G833G,3050,17.28,G833G,polyprotein,T2499C,T to C,synonymous SNV,3190,N10_203B,T2499C,G833G,1D: G267G; T801C
+NW3,polyprotein E848K,3093,4.82,E848K,polyprotein,G2542A,G to A,nonsynonymous SNV,2905,N10_203B,G2542A,E848K,1D: E282K; G844A
+NW3,polyprotein R945R,3386,1.29,R945R,polyprotein,G2835A,G to A,synonymous SNV,2174,N10_203B,G2835A,R945R,2A: R92R; G276A
+NW3,polyprotein I965V,3444,9.2,I965V,polyprotein,A2893G,A to G,nonsynonymous SNV,2011,N10_203B,A2893G,I965V,2A: I112V; A334G
+NW3,polyprotein L976L,3479,1.04,L976L,polyprotein,G2928A,G to A,synonymous SNV,1733,N10_203B,G2928A,L976L,2A: L123L; G369A
+NW3,polyprotein G991S,3522,1.47,G991S,polyprotein,G2971A,G to A,nonsynonymous SNV,1358,N10_203B,G2971A,G991S,2A: G138S; G412A
+NW3,polyprotein K1011E,3582,1.19,K1011E,polyprotein,A3031G,A to G,nonsynonymous SNV,508,N10_203B,A3031G,K1011E,2B: K11E; A31G
+NW3,polyprotein S1026S,3629,1.42,S1026S,polyprotein,T3078C,T to C,synonymous SNV,635,N10_203B,T3078C,S1026S,2B: S26S; T78C
+NW3,polyprotein S1042S,3677,9.24,S1042S,polyprotein,C3126T,C to T,synonymous SNV,1321,N10_203B,C3126T,S1042S,2B: S42S; C126T
+NW3,polyprotein S1049S,3698,27.32,S1049S,polyprotein,A3147G,A to G,synonymous SNV,1435,N10_203B,A3147G,S1049S,2B: S49S; A147G
+NW3,polyprotein K1087K,3812,9.07,K1087K,polyprotein,G3261A,G to A,synonymous SNV,2700,N10_203B,G3261A,K1087K,2B: K87K; G261A
+NW3,polyprotein K1105K,3866,1.08,K1105K,polyprotein,A3315G,A to G,synonymous SNV,2952,N10_203B,A3315G,K1105K,2C: K8K; A24G
+NW3,polyprotein L1191L,4124,1.95,L1191L,polyprotein,G3573A,G to A,synonymous SNV,3791,N10_203B,G3573A,L1191L,2C: L94L; G282A
+NW3,polyprotein G1227G,4232,28.48,G1227G,polyprotein,C3681T,C to T,synonymous SNV,3537,N10_203B,C3681T,G1227G,2C: G130G; C390T
+NW3,polyprotein T1228A,4233,9.13,T1228A,polyprotein,A3682G,A to G,nonsynonymous SNV,3559,N10_203B,A3682G,T1228A,2C: T131A; A391G
+NW3,polyprotein A1269A,4358,1.22,A1269A,polyprotein,T3807C,T to C,synonymous SNV,3534,N10_203B,T3807C,A1269A,2C: A172A; T516C
+NW3,polyprotein F1297F,4442,99.91,F1297F,polyprotein,C3891T,C to T,synonymous SNV,3434,N10_203B,C3891T,F1297F,2C: F200F; C600T
+NW3,polyprotein S1322S,4517,3.47,S1322S,polyprotein,C3966T,C to T,synonymous SNV,3578,N10_203B,C3966T,S1322S,2C: S225S; C675T
+NW3,polyprotein R1339R,4568,1.35,R1339R,polyprotein,G4017A,G to A,synonymous SNV,3551,N10_203B,G4017A,R1339R,2C: R242R; G726A
+NW3,polyprotein K1354K,4613,18.94,K1354K,polyprotein,A4062G,A to G,synonymous SNV,3242,N10_203B,A4062G,K1354K,2C: K257K; A771G
+NW3,polyprotein S1389S,4718,1.82,S1389S,polyprotein,C4167T,C to T,synonymous SNV,2640,N10_203B,C4167T,S1389S,2C: S292S; C876T
+NW3,polyprotein D1433D,4850,13.1,D1433D,polyprotein,C4299T,C to T,synonymous SNV,1534,N10_203B,C4299T,D1433D,3A: D6D; C18T
+NW3,polyprotein I1589I,5318,9.73,I1589I,polyprotein,T4767C,T to C,synonymous SNV,3616,N10_203B,T4767C,I1589I,3C: I54I; T162C
+NW3,polyprotein L1629L,5438,4.57,L1629L,polyprotein,A4887G,A to G,synonymous SNV,3697,N10_203B,A4887G,L1629L,3C: L94L; A282G
+NW3,polyprotein S1722C,5715,2.48,S1722C,polyprotein,A5164T,A to T,nonsynonymous SNV,3468,N10_203B,A5164T,S1722C,3D: S5C; A13T
+NW3,polyprotein I1746V,5787,1.39,I1746V,polyprotein,A5236G,A to G,nonsynonymous SNV,3030,N10_203B,A5236G,I1746V,3D: I29V; A85G
+NW3,polyprotein K1815E,5994,1.32,K1815E,polyprotein,A5443G,A to G,nonsynonymous SNV,680,N10_203B,A5443G,K1815E,3D: K98E; A292G
+NW3,polyprotein L1911L,6284,1.05,L1911L,polyprotein,G5733A,G to A,synonymous SNV,6380,N10_203B,G5733A,L1911L,3D: L194L; G582A
+NW3,polyprotein V1969V,6458,1.01,V1969V,polyprotein,T5907C,T to C,synonymous SNV,7532,N10_203B,T5907C,V1969V,3D: V252V; T756C
+NW3,polyprotein F1975F,6476,19.18,F1975F,polyprotein,C5925T,C to T,synonymous SNV,7479,N10_203B,C5925T,F1975F,3D: F258F; C774T
+NW3,polyprotein I1997T,6541,1.04,I1997T,polyprotein,T5990C,T to C,nonsynonymous SNV,7188,N10_203B,T5990C,I1997T,3D: I280T; T839C
+NW3,polyprotein N2017N,6602,9.36,N2017N,polyprotein,C6051T,C to T,synonymous SNV,5290,N10_203B,C6051T,N2017N,3D: N300N; C900T
+NW3,polyprotein I2162M,7037,1.67,I2162M,polyprotein,A6486G,A to G,nonsynonymous SNV,717,N10_203B,A6486G,I2162M,3D: I445M; A1335G
+NW3_mNGS,polyprotein I18V,603,1.37,I18V,polyprotein,A52G,A to G,nonsynonymous SNV,146,N10-203B_S302_L001_R1_001.preprocessed.fastq,A52G,I18V,1A: I18V; A52G
+NW3_mNGS,polyprotein N21H,612,4.67,N21H,polyprotein,A61C,A to C,nonsynonymous SNV,150,N10-203B_S302_L001_R1_001.preprocessed.fastq,A61C,N21H,1A: N21H; A61C
+NW3_mNGS,polyprotein T28T,635,10.56,T28T,polyprotein,C84T,C to T,synonymous SNV,161,N10-203B_S302_L001_R1_001.preprocessed.fastq,C84T,T28T,1A: T28T; C84T
+NW3_mNGS,polyprotein P56L,718,1.02,P56L,polyprotein,C167T,C to T,nonsynonymous SNV,196,N10-203B_S302_L001_R1_001.preprocessed.fastq,C167T,P56L,1A: P56L; C167T
+NW3_mNGS,polyprotein Y104D,861,1.23,Y104D,polyprotein,T310G,T to G,nonsynonymous SNV,162,N10-203B_S302_L001_R1_001.preprocessed.fastq,T310G,Y104D,1B: Y35D; T103G
+NW3_mNGS,polyprotein T134T,953,6.67,T134T,polyprotein,G402A,G to A,synonymous SNV,195,N10-203B_S302_L001_R1_001.preprocessed.fastq,G402A,T134T,1B: T65T; G195A
+NW3_mNGS,polyprotein N141N,974,1.44,N141N,polyprotein,T423C,T to C,synonymous SNV,208,N10-203B_S302_L001_R1_001.preprocessed.fastq,T423C,N141N,1B: N72N; T216C
+NW3_mNGS,polyprotein D157D,1022,99.48,D157D,polyprotein,T471C,T to C,synonymous SNV,192,N10-203B_S302_L001_R1_001.preprocessed.fastq,T471C,D157D,1B: D88D; T264C
+NW3_mNGS,polyprotein G171D,1063,1.17,G171D,polyprotein,G512A,G to A,nonsynonymous SNV,171,N10-203B_S302_L001_R1_001.preprocessed.fastq,G512A,G171D,1B: G102D; G305A
+NW3_mNGS,polyprotein I177M,1082,1.08,I177M,polyprotein,T531G,T to G,nonsynonymous SNV,186,N10-203B_S302_L001_R1_001.preprocessed.fastq,T531G,I177M,1B: I108M; T324G
+NW3_mNGS,polyprotein Q180Q,1091,2.09,Q180Q,polyprotein,G540A,G to A,synonymous SNV,191,N10-203B_S302_L001_R1_001.preprocessed.fastq,G540A,Q180Q,1B: Q111Q; G333A
+NW3_mNGS,polyprotein L191L,1122,1.4,L191L,polyprotein,C571T,C to T,synonymous SNV,215,N10-203B_S302_L001_R1_001.preprocessed.fastq,C571T,L191L,1B: L122L; C364T
+NW3_mNGS,polyprotein G219E,1207,1.05,G219E,polyprotein,G656A,G to A,nonsynonymous SNV,190,N10-203B_S302_L001_R1_001.preprocessed.fastq,G656A,G219E,1B: G150E; G449A
+NW3_mNGS,polyprotein N221N,1214,1.08,N221N,polyprotein,T663C,T to C,synonymous SNV,186,N10-203B_S302_L001_R1_001.preprocessed.fastq,T663C,N221N,1B: N152N; T456C
+NW3_mNGS,polyprotein A227T,1230,1.1,A227T,polyprotein,G679A,G to A,nonsynonymous SNV,181,N10-203B_S302_L001_R1_001.preprocessed.fastq,G679A,A227T,1B: A158T; G472A
+NW3_mNGS,polyprotein T228T,1235,8.47,T228T,polyprotein,A684G,A to G,synonymous SNV,177,N10-203B_S302_L001_R1_001.preprocessed.fastq,A684G,T228T,1B: T159T; A477G
+NW3_mNGS,polyprotein Q255R,1315,1.57,Q255R,polyprotein,A764G,A to G,nonsynonymous SNV,127,N10-203B_S302_L001_R1_001.preprocessed.fastq,A764G,Q255R,1B: Q186R; A557G
+NW3_mNGS,polyprotein A265V,1345,1.55,A265V,polyprotein,C794T,C to T,nonsynonymous SNV,129,N10-203B_S302_L001_R1_001.preprocessed.fastq,C794T,A265V,1B: A196V; C587T
+NW3_mNGS,polyprotein V310E,1480,1,V310E,polyprotein,T929A,T to A,nonsynonymous SNV,100,N10-203B_S302_L001_R1_001.preprocessed.fastq,T929A,V310E,1B: V241E; T722A
+NW3_mNGS,polyprotein I312T,1486,1.01,I312T,polyprotein,T935C,T to C,nonsynonymous SNV,99,N10-203B_S302_L001_R1_001.preprocessed.fastq,T935C,I312T,1B: I243T; T728C
+NW3_mNGS,polyprotein G331G,1544,3.08,G331G,polyprotein,C993T,C to T,synonymous SNV,130,N10-203B_S302_L001_R1_001.preprocessed.fastq,C993T,G331G,1C: G1G; C3T
+NW3_mNGS,polyprotein G419D,1807,5.61,G419D,polyprotein,G1256A,G to A,nonsynonymous SNV,214,N10-203B_S302_L001_R1_001.preprocessed.fastq,G1256A,G419D,1C: G89D; G266A
+NW3_mNGS,polyprotein A438S,1863,1.14,A438S,polyprotein,G1312T,G to T,nonsynonymous SNV,176,N10-203B_S302_L001_R1_001.preprocessed.fastq,G1312T,A438S,1C: A108S; G322T
+NW3_mNGS,polyprotein V482V,1997,1.27,V482V,polyprotein,A1446G,A to G,synonymous SNV,237,N10-203B_S302_L001_R1_001.preprocessed.fastq,A1446G,V482V,1C: V152V; A456G
+NW3_mNGS,polyprotein D509D,2078,1.94,D509D,polyprotein,C1527T,C to T,synonymous SNV,206,N10-203B_S302_L001_R1_001.preprocessed.fastq,C1527T,D509D,1C: D179D; C537T
+NW3_mNGS,polyprotein T510I,2080,19.8,T510I,polyprotein,C1529T,C to T,nonsynonymous SNV,202,N10-203B_S302_L001_R1_001.preprocessed.fastq,C1529T,T510I,1C: T180I; C539T
+NW3_mNGS,polyprotein G515D,2095,1.1,G515D,polyprotein,G1544A,G to A,complex,181,N10-203B_S302_L001_R1_001.preprocessed.fastq,G1544A,G515D,1C: G185D; G554A
+NW3_mNGS,polyprotein G515G,2096,18.23,G515G,polyprotein,C1545T,C to T,complex,181,N10-203B_S302_L001_R1_001.preprocessed.fastq,C1545T,G515G,1C: G185G; C555T
+NW3_mNGS,polyprotein L525F,2126,1.78,L525F,polyprotein,A1575T,A to T,nonsynonymous SNV,169,N10-203B_S302_L001_R1_001.preprocessed.fastq,A1575T,L525F,1C: L195F; A585T
+NW3_mNGS,polyprotein Q533H,2150,1.11,Q533H,polyprotein,A1599T,A to T,nonsynonymous SNV,180,N10-203B_S302_L001_R1_001.preprocessed.fastq,A1599T,Q533H,1C: Q203H; A609T
+NW3_mNGS,polyprotein I541V,2172,5.11,I541V,polyprotein,A1621G,A to G,nonsynonymous SNV,176,N10-203B_S302_L001_R1_001.preprocessed.fastq,A1621G,I541V,1C: I211V; A631G
+NW3_mNGS,polyprotein T555T,2216,34.56,T555T,polyprotein,T1665C,T to C,synonymous SNV,136,N10-203B_S302_L001_R1_001.preprocessed.fastq,T1665C,T555T,1C: T225T; T675C
+NW3_mNGS,polyprotein L568P,2254,1.74,L568P,polyprotein,T1703C,T to C,complex,115,N10-203B_S302_L001_R1_001.preprocessed.fastq,T1703C,L568P,1D: L2P; T5C
+NW3_mNGS,polyprotein L568L,2255,1.72,L568L,polyprotein,A1704T,A to T,complex,116,N10-203B_S302_L001_R1_001.preprocessed.fastq,A1704T,L568L,1D: L2L; A6T
+NW3_mNGS,polyprotein V577V,2282,14.85,V577V,polyprotein,C1731T,C to T,synonymous SNV,101,N10-203B_S302_L001_R1_001.preprocessed.fastq,C1731T,V577V,1D: V11V; C33T
+NW3_mNGS,polyprotein S586S,2309,2.13,S586S,polyprotein,G1758A,G to A,synonymous SNV,94,N10-203B_S302_L001_R1_001.preprocessed.fastq,G1758A,S586S,1D: S20S; G60A
+NW3_mNGS,polyprotein N590Y,2319,1.22,N590Y,polyprotein,A1768T,A to T,complex,82,N10-203B_S302_L001_R1_001.preprocessed.fastq,A1768T,N590Y,1D: N24Y; A70T
+NW3_mNGS,polyprotein N590T,2320,1.23,N590T,polyprotein,A1769C,A to C,complex,81,N10-203B_S302_L001_R1_001.preprocessed.fastq,A1769C,N590T,1D: N24T; A71C
+NW3_mNGS,polyprotein H593P,2329,1.52,H593P,polyprotein,A1778C,A to C,nonsynonymous SNV,66,N10-203B_S302_L001_R1_001.preprocessed.fastq,A1778C,H593P,1D: H27P; A80C
+NW3_mNGS,polyprotein A607S,2370,1.54,A607S,polyprotein,G1819T,G to T,nonsynonymous SNV,65,N10-203B_S302_L001_R1_001.preprocessed.fastq,G1819T,A607S,1D: A41S; G121T
+NW3_mNGS,polyprotein L609R,2377,1.45,L609R,polyprotein,T1826G,T to G,nonsynonymous SNV,69,N10-203B_S302_L001_R1_001.preprocessed.fastq,T1826G,L609R,1D: L43R; T128G
+NW3_mNGS,polyprotein V612I,2385,1.43,V612I,polyprotein,G1834A,G to A,nonsynonymous SNV,70,N10-203B_S302_L001_R1_001.preprocessed.fastq,G1834A,V612I,1D: V46I; G136A
+NW3_mNGS,polyprotein N616K,2399,2.5,N616K,polyprotein,T1848G,T to G,nonsynonymous SNV,80,N10-203B_S302_L001_R1_001.preprocessed.fastq,T1848G,N616K,1D: N50K; T150G
+NW3_mNGS,polyprotein E618A,2404,5.95,E618A,polyprotein,A1853C,A to C,nonsynonymous SNV,84,N10-203B_S302_L001_R1_001.preprocessed.fastq,A1853C,E618A,1D: E52A; A155C
+NW3_mNGS,polyprotein E630V,2440,1.22,E630V,polyprotein,A1889T,A to T,nonsynonymous SNV,164,N10-203B_S302_L001_R1_001.preprocessed.fastq,A1889T,E630V,1D: E64V; A191T
+NW3_mNGS,polyprotein F636L,2457,1.13,F636L,polyprotein,T1906C,T to C,nonsynonymous SNV,177,N10-203B_S302_L001_R1_001.preprocessed.fastq,T1906C,F636L,1D: F70L; T208C
+NW3_mNGS,polyprotein R639R,2468,2.7,R639R,polyprotein,G1917A,G to A,synonymous SNV,185,N10-203B_S302_L001_R1_001.preprocessed.fastq,G1917A,R639R,1D: R73R; G219A
+NW3_mNGS,polyprotein A640V,2470,2.63,A640V,polyprotein,C1919T,C to T,complex,190,N10-203B_S302_L001_R1_001.preprocessed.fastq,C1919T,A640V,1D: A74V; C221T
+NW3_mNGS,polyprotein A640A,2471,2.59,A640A,polyprotein,A1920T,A to T,complex,193,N10-203B_S302_L001_R1_001.preprocessed.fastq,A1920T,A640A,1D: A74A; A222T
+NW3_mNGS,polyprotein D647D,2492,15.22,D647D,polyprotein,C1941T,C to T,synonymous SNV,230,N10-203B_S302_L001_R1_001.preprocessed.fastq,C1941T,D647D,1D: D81D; C243T
+NW3_mNGS,polyprotein R689R,2618,13.01,R689R,polyprotein,A2067G,A to G,synonymous SNV,269,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2067G,R689R,1D: R123R; A369G
+NW3_mNGS,polyprotein N710N,2681,1,N710N,polyprotein,C2130T,C to T,synonymous SNV,201,N10-203B_S302_L001_R1_001.preprocessed.fastq,C2130T,N710N,1D: N144N; C432T
+NW3_mNGS,polyprotein M717L,2700,1.21,M717L,polyprotein,A2149C,A to C,nonsynonymous SNV,165,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2149C,M717L,1D: M151L; A451C
+NW3_mNGS,polyprotein S738S,2765,37.23,S738S,polyprotein,A2214G,A to G,synonymous SNV,137,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2214G,S738S,1D: S172S; A516G
+NW3_mNGS,polyprotein G747G,2792,5.04,G747G,polyprotein,T2241C,T to C,synonymous SNV,139,N10-203B_S302_L001_R1_001.preprocessed.fastq,T2241C,G747G,1D: G181G; T543C
+NW3_mNGS,polyprotein N764N,2843,2.33,N764N,polyprotein,C2292T,C to T,synonymous SNV,129,N10-203B_S302_L001_R1_001.preprocessed.fastq,C2292T,N764N,1D: N198N; C594T
+NW3_mNGS,polyprotein I790M,2921,34.78,I790M,polyprotein,A2370G,A to G,nonsynonymous SNV,115,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2370G,I790M,1D: I224M; A672G
+NW3_mNGS,polyprotein R812C,2985,1,R812C,polyprotein,C2434T,C to T,nonsynonymous SNV,100,N10-203B_S302_L001_R1_001.preprocessed.fastq,C2434T,R812C,1D: R246C; C736T
+NW3_mNGS,polyprotein H815P,2995,1.04,H815P,polyprotein,A2444C,A to C,nonsynonymous SNV,96,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2444C,H815P,1D: H249P; A746C
+NW3_mNGS,polyprotein P824A,3021,1.14,P824A,polyprotein,C2470G,C to G,nonsynonymous SNV,88,N10-203B_S302_L001_R1_001.preprocessed.fastq,C2470G,P824A,1D: P258A; C772G
+NW3_mNGS,polyprotein A826V,3028,1.06,A826V,polyprotein,C2477T,C to T,nonsynonymous SNV,94,N10-203B_S302_L001_R1_001.preprocessed.fastq,C2477T,A826V,1D: A260V; C779T
+NW3_mNGS,polyprotein G833G,3050,21,G833G,polyprotein,T2499C,T to C,synonymous SNV,100,N10-203B_S302_L001_R1_001.preprocessed.fastq,T2499C,G833G,1D: G267G; T801C
+NW3_mNGS,polyprotein R847I,3091,1.03,R847I,polyprotein,G2540T,G to T,nonsynonymous SNV,97,N10-203B_S302_L001_R1_001.preprocessed.fastq,G2540T,R847I,1D: R281I; G842T
+NW3_mNGS,polyprotein E848K,3093,5,E848K,polyprotein,G2542A,G to A,nonsynonymous SNV,100,N10-203B_S302_L001_R1_001.preprocessed.fastq,G2542A,E848K,1D: E282K; G844A
+NW3_mNGS,polyprotein S866G,3147,1.12,S866G,polyprotein,A2596G,A to G,nonsynonymous SNV,89,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2596G,S866G,2A: S13G; A37G
+NW3_mNGS,polyprotein L883L,3200,1.06,L883L,polyprotein,G2649A,G to A,synonymous SNV,94,N10-203B_S302_L001_R1_001.preprocessed.fastq,G2649A,L883L,2A: L30L; G90A
+NW3_mNGS,polyprotein L887H,3211,1.15,L887H,polyprotein,T2660A,T to A,nonsynonymous SNV,87,N10-203B_S302_L001_R1_001.preprocessed.fastq,T2660A,L887H,2A: L34H; T101A
+NW3_mNGS,polyprotein P888P,3215,1.15,P888P,polyprotein,A2664T,A to T,synonymous SNV,87,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2664T,P888P,2A: P35P; A105T
+NW3_mNGS,polyprotein A899A,3248,1.3,A899A,polyprotein,T2697C,T to C,synonymous SNV,77,N10-203B_S302_L001_R1_001.preprocessed.fastq,T2697C,A899A,2A: A46A; T138C
+NW3_mNGS,polyprotein E903E,3260,1.22,E903E,polyprotein,A2709G,A to G,synonymous SNV,82,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2709G,E903E,2A: E50E; A150G
+NW3_mNGS,polyprotein G913R,3288,1.18,G913R,polyprotein,G2737A,G to A,nonsynonymous SNV,85,N10-203B_S302_L001_R1_001.preprocessed.fastq,G2737A,G913R,2A: G60R; G178A
+NW3_mNGS,polyprotein N921Y,3312,1.11,N921Y,polyprotein,A2761T,A to T,nonsynonymous SNV,90,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2761T,N921Y,2A: N68Y; A202T
+NW3_mNGS,polyprotein C928F,3334,1.23,C928F,polyprotein,G2783T,G to T,complex,81,N10-203B_S302_L001_R1_001.preprocessed.fastq,G2783T,C928F,2A: C75F; G224T
+NW3_mNGS,polyprotein C928C,3335,1.25,C928C,polyprotein,T2784C,T to C,complex,80,N10-203B_S302_L001_R1_001.preprocessed.fastq,T2784C,C928C,2A: C75C; T225C
+NW3_mNGS,polyprotein K930Q,3339,1.3,K930Q,polyprotein,A2788C,A to C,complex,77,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2788C,K930Q,2A: K77Q; A229C
+NW3_mNGS,polyprotein K930K,3341,1.22,K930K,polyprotein,A2790G,A to G,complex,82,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2790G,K930K,2A: K77K; A231G
+NW3_mNGS,polyprotein P931P,3344,1.22,P931P,polyprotein,T2793G,T to G,synonymous SNV,82,N10-203B_S302_L001_R1_001.preprocessed.fastq,T2793G,P931P,2A: P78P; T234G
+NW3_mNGS,polyprotein C933G,3348,3.53,C933G,polyprotein,T2797G,T to G,nonsynonymous SNV,85,N10-203B_S302_L001_R1_001.preprocessed.fastq,T2797G,C933G,2A: C80G; T238G
+NW3_mNGS,polyprotein Y941H,3372,1.41,Y941H,polyprotein,T2821C,T to C,nonsynonymous SNV,71,N10-203B_S302_L001_R1_001.preprocessed.fastq,T2821C,Y941H,2A: Y88H; T262C
+NW3_mNGS,polyprotein Y942C,3376,1.43,Y942C,polyprotein,A2825G,A to G,nonsynonymous SNV,70,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2825G,Y942C,2A: Y89C; A266G
+NW3_mNGS,polyprotein Q947H,3392,1.41,Q947H,polyprotein,A2841T,A to T,nonsynonymous SNV,71,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2841T,Q947H,2A: Q94H; A282T
+NW3_mNGS,polyprotein V954V,3413,1.59,V954V,polyprotein,G2862T,G to T,synonymous SNV,63,N10-203B_S302_L001_R1_001.preprocessed.fastq,G2862T,V954V,2A: V101V; G303T
+NW3_mNGS,polyprotein P959P,3428,1.64,P959P,polyprotein,A2877C,A to C,synonymous SNV,61,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2877C,P959P,2A: P106P; A318C
+NW3_mNGS,polyprotein I965V,3444,11.67,I965V,polyprotein,A2893G,A to G,nonsynonymous SNV,60,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2893G,I965V,2A: I112V; A334G
+NW3_mNGS,polyprotein I969K,3457,2.86,I969K,polyprotein,T2906A,T to A,complex,70,N10-203B_S302_L001_R1_001.preprocessed.fastq,T2906A,I969K,2A: I116K; T347A
+NW3_mNGS,polyprotein I969M,3458,1.43,I969M,polyprotein,A2907G,A to G,complex,70,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2907G,I969M,2A: I116M; A348G
+NW3_mNGS,polyprotein F983C,3499,1.67,F983C,polyprotein,T2948G,T to G,nonsynonymous SNV,62,N10-203B_S302_L001_R1_001.preprocessed.fastq,T2948G,F983C,2A: F130C; T389G
+NW3_mNGS,polyprotein C985R,3504,1.49,C985R,polyprotein,T2953C,T to C,nonsynonymous SNV,67,N10-203B_S302_L001_R1_001.preprocessed.fastq,T2953C,C985R,2A: C132R; T394C
+NW3_mNGS,polyprotein A987S,3510,1.61,A987S,polyprotein,G2959T,G to T,complex,62,N10-203B_S302_L001_R1_001.preprocessed.fastq,G2959T,A987S,2A: A134S; G400T
+NW3_mNGS,polyprotein A987E,3511,1.54,A987E,polyprotein,C2960A,C to A,complex,65,N10-203B_S302_L001_R1_001.preprocessed.fastq,C2960A,A987E,2A: A134E; C401A
+NW3_mNGS,polyprotein A987A,3512,1.54,A987A,polyprotein,A2961C,A to C,complex,65,N10-203B_S302_L001_R1_001.preprocessed.fastq,A2961C,A987A,2A: A134A; A402C
+NW3_mNGS,polyprotein G991G,3524,1.54,G991G,polyprotein,T2973A,T to A,synonymous SNV,65,N10-203B_S302_L001_R1_001.preprocessed.fastq,T2973A,G991G,2A: G138G; T414A
+NW3_mNGS,polyprotein L992Q,3526,1.52,L992Q,polyprotein,T2975A,T to A,nonsynonymous SNV,66,N10-203B_S302_L001_R1_001.preprocessed.fastq,T2975A,L992Q,2A: L139Q; T416A
+NW3_mNGS,polyprotein G1001G,3554,2.94,G1001G,polyprotein,G3003A,G to A,synonymous SNV,68,N10-203B_S302_L001_R1_001.preprocessed.fastq,G3003A,G1001G,2B: G1G; G3A
+NW3_mNGS,polyprotein N1008K,3575,1.32,N1008K,polyprotein,T3024A,T to A,nonsynonymous SNV,76,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3024A,N1008K,2B: N8K; T24A
+NW3_mNGS,polyprotein F1017C,3601,1.18,F1017C,polyprotein,T3050G,T to G,nonsynonymous SNV,85,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3050G,F1017C,2B: F17C; T50G
+NW3_mNGS,polyprotein T1018P,3603,1.15,T1018P,polyprotein,A3052C,A to C,nonsynonymous SNV,87,N10-203B_S302_L001_R1_001.preprocessed.fastq,A3052C,T1018P,2B: T18P; A52C
+NW3_mNGS,polyprotein L1028L,3635,2.11,L1028L,polyprotein,C3084T,C to T,synonymous SNV,95,N10-203B_S302_L001_R1_001.preprocessed.fastq,C3084T,L1028L,2B: L28L; C84T
+NW3_mNGS,polyprotein S1030G,3639,1.08,S1030G,polyprotein,A3088G,A to G,nonsynonymous SNV,93,N10-203B_S302_L001_R1_001.preprocessed.fastq,A3088G,S1030G,2B: S30G; A88G
+NW3_mNGS,polyprotein Y1035D,3654,1.11,Y1035D,polyprotein,T3103G,T to G,nonsynonymous SNV,90,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3103G,Y1035D,2B: Y35D; T103G
+NW3_mNGS,polyprotein S1042S,3677,13.08,S1042S,polyprotein,C3126T,C to T,synonymous SNV,107,N10-203B_S302_L001_R1_001.preprocessed.fastq,C3126T,S1042S,2B: S42S; C126T
+NW3_mNGS,polyprotein S1049S,3698,33.03,S1049S,polyprotein,A3147G,A to G,synonymous SNV,109,N10-203B_S302_L001_R1_001.preprocessed.fastq,A3147G,S1049S,2B: S49S; A147G
+NW3_mNGS,polyprotein K1087K,3812,12.3,K1087K,polyprotein,G3261A,G to A,synonymous SNV,122,N10-203B_S302_L001_R1_001.preprocessed.fastq,G3261A,K1087K,2B: K87K; G261A
+NW3_mNGS,polyprotein G1115R,3894,1.56,G1115R,polyprotein,G3343A,G to A,nonsynonymous SNV,128,N10-203B_S302_L001_R1_001.preprocessed.fastq,G3343A,G1115R,2C: G18R; G52A
+NW3_mNGS,polyprotein L1116M,3897,1.59,L1116M,polyprotein,T3346A,T to A,complex,126,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3346A,L1116M,2C: L19M; T55A
+NW3_mNGS,polyprotein L1116W,3898,1.61,L1116W,polyprotein,T3347G,T to G,complex,124,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3347G,L1116W,2C: L19W; T56G
+NW3_mNGS,polyprotein K1133Q,3948,1.74,K1133Q,polyprotein,A3397C,A to C,nonsynonymous SNV,115,N10-203B_S302_L001_R1_001.preprocessed.fastq,A3397C,K1133Q,2C: K36Q; A106C
+NW3_mNGS,polyprotein R1139I,3967,1.82,R1139I,polyprotein,G3416T,G to T,nonsynonymous SNV,110,N10-203B_S302_L001_R1_001.preprocessed.fastq,G3416T,R1139I,2C: R42I; G125T
+NW3_mNGS,polyprotein L1191L,4124,1.52,L1191L,polyprotein,G3573A,G to A,synonymous SNV,132,N10-203B_S302_L001_R1_001.preprocessed.fastq,G3573A,L1191L,2C: L94L; G282A
+NW3_mNGS,polyprotein T1207T,4172,2.54,T1207T,polyprotein,T3621C,T to C,synonymous SNV,118,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3621C,T1207T,2C: T110T; T330C
+NW3_mNGS,polyprotein Q1211P,4183,4.72,Q1211P,polyprotein,A3632C,A to C,nonsynonymous SNV,127,N10-203B_S302_L001_R1_001.preprocessed.fastq,A3632C,Q1211P,2C: Q114P; A341C
+NW3_mNGS,polyprotein G1227G,4232,41.35,G1227G,polyprotein,C3681T,C to T,synonymous SNV,104,N10-203B_S302_L001_R1_001.preprocessed.fastq,C3681T,G1227G,2C: G130G; C390T
+NW3_mNGS,polyprotein T1228A,4233,6,T1228A,polyprotein,A3682G,A to G,nonsynonymous SNV,100,N10-203B_S302_L001_R1_001.preprocessed.fastq,A3682G,T1228A,2C: T131A; A391G
+NW3_mNGS,polyprotein S1238S,4265,1.16,S1238S,polyprotein,T3714G,T to G,synonymous SNV,86,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3714G,S1238S,2C: S141S; T423G
+NW3_mNGS,polyprotein L1239S,4267,1.18,L1239S,polyprotein,T3716C,T to C,nonsynonymous SNV,85,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3716C,L1239S,2C: L142S; T425C
+NW3_mNGS,polyprotein G1241G,4274,1.25,G1241G,polyprotein,T3723G,T to G,synonymous SNV,80,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3723G,G1241G,2C: G144G; T432G
+NW3_mNGS,polyprotein R1242I,4276,1.15,R1242I,polyprotein,G3725T,G to T,complex,87,N10-203B_S302_L001_R1_001.preprocessed.fastq,G3725T,R1242I,2C: R145I; G434T
+NW3_mNGS,polyprotein R1242S,4277,1.06,R1242S,polyprotein,A3726T,A to T,complex,94,N10-203B_S302_L001_R1_001.preprocessed.fastq,A3726T,R1242S,2C: R145S; A435T
+NW3_mNGS,polyprotein A1245T,4284,1.06,A1245T,polyprotein,G3733A,G to A,complex,94,N10-203B_S302_L001_R1_001.preprocessed.fastq,G3733A,A1245T,2C: A148T; G442A
+NW3_mNGS,polyprotein A1245G,4285,1.16,A1245G,polyprotein,C3734G,C to G,complex,87,N10-203B_S302_L001_R1_001.preprocessed.fastq,C3734G,A1245G,2C: A148G; C443G
+NW3_mNGS,polyprotein I1247R,4291,2.33,I1247R,polyprotein,T3740G,T to G,nonsynonymous SNV,86,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3740G,I1247R,2C: I150R; T449G
+NW3_mNGS,polyprotein Y1253N,4308,2.5,Y1253N,polyprotein,T3757A,T to A,nonsynonymous SNV,80,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3757A,Y1253N,2C: Y156N; T466A
+NW3_mNGS,polyprotein L1255P,4315,1.35,L1255P,polyprotein,T3764C,T to C,complex,74,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3764C,L1255P,2C: L158P; T473C
+NW3_mNGS,polyprotein L1255L,4316,1.35,L1255L,polyprotein,T3765A,T to A,complex,74,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3765A,L1255L,2C: L158L; T474A
+NW3_mNGS,polyprotein P1257S,4320,1.35,P1257S,polyprotein,C3769T,C to T,nonsynonymous SNV,74,N10-203B_S302_L001_R1_001.preprocessed.fastq,C3769T,P1257S,2C: P160S; C478T
+NW3_mNGS,polyprotein L1273L,4368,1.23,L1273L,polyprotein,T3817C,T to C,synonymous SNV,81,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3817C,L1273L,2C: L176L; T526C
+NW3_mNGS,polyprotein S1294S,4433,1.11,S1294S,polyprotein,A3882G,A to G,synonymous SNV,90,N10-203B_S302_L001_R1_001.preprocessed.fastq,A3882G,S1294S,2C: S197S; A591G
+NW3_mNGS,polyprotein F1297F,4442,100,F1297F,polyprotein,C3891T,C to T,synonymous SNV,91,N10-203B_S302_L001_R1_001.preprocessed.fastq,C3891T,F1297F,2C: F200F; C600T
+NW3_mNGS,polyprotein D1305E,4466,1.11,D1305E,polyprotein,T3915A,T to A,nonsynonymous SNV,90,N10-203B_S302_L001_R1_001.preprocessed.fastq,T3915A,D1305E,2C: D208E; T624A
+NW3_mNGS,polyprotein K1307Q,4470,1.23,K1307Q,polyprotein,A3919C,A to C,nonsynonymous SNV,81,N10-203B_S302_L001_R1_001.preprocessed.fastq,A3919C,K1307Q,2C: K210Q; A628C
+NW3_mNGS,polyprotein M1309I,4478,1.28,M1309I,polyprotein,G3927T,G to T,nonsynonymous SNV,78,N10-203B_S302_L001_R1_001.preprocessed.fastq,G3927T,M1309I,2C: M212I; G636T
+NW3_mNGS,polyprotein S1319L,4507,1.27,S1319L,polyprotein,C3956T,C to T,nonsynonymous SNV,79,N10-203B_S302_L001_R1_001.preprocessed.fastq,C3956T,S1319L,2C: S222L; C665T
+NW3_mNGS,polyprotein S1322S,4517,2.6,S1322S,polyprotein,C3966T,C to T,synonymous SNV,77,N10-203B_S302_L001_R1_001.preprocessed.fastq,C3966T,S1322S,2C: S225S; C675T
+NW3_mNGS,polyprotein L1325L,4526,1.2,L1325L,polyprotein,A3975G,A to G,synonymous SNV,83,N10-203B_S302_L001_R1_001.preprocessed.fastq,A3975G,L1325L,2C: L228L; A684G
+NW3_mNGS,polyprotein V1330I,4539,1.35,V1330I,polyprotein,G3988A,G to A,nonsynonymous SNV,74,N10-203B_S302_L001_R1_001.preprocessed.fastq,G3988A,V1330I,2C: V233I; G697A
+NW3_mNGS,polyprotein R1339T,4567,1.06,R1339T,polyprotein,G4016C,G to C,complex,94,N10-203B_S302_L001_R1_001.preprocessed.fastq,G4016C,R1339T,2C: R242T; G725C
+NW3_mNGS,polyprotein R1339S,4568,1.04,R1339S,polyprotein,G4017C,G to C,complex,96,N10-203B_S302_L001_R1_001.preprocessed.fastq,G4017C,R1339S,2C: R242S; G726C
+NW3_mNGS,polyprotein F1340S,4570,1.11,F1340S,polyprotein,T4019C,T to C,nonsynonymous SNV,90,N10-203B_S302_L001_R1_001.preprocessed.fastq,T4019C,F1340S,2C: F243S; T728C
+NW3_mNGS,polyprotein G1341R,4572,2.11,G1341R,polyprotein,G4021A,G to A,nonsynonymous SNV,95,N10-203B_S302_L001_R1_001.preprocessed.fastq,G4021A,G1341R,2C: G244R; G730A
+NW3_mNGS,polyprotein F1342L,4577,1.09,F1342L,polyprotein,T4026A,T to A,nonsynonymous SNV,92,N10-203B_S302_L001_R1_001.preprocessed.fastq,T4026A,F1342L,2C: F245L; T735A
+NW3_mNGS,polyprotein K1354K,4613,21.67,K1354K,polyprotein,A4062G,A to G,synonymous SNV,120,N10-203B_S302_L001_R1_001.preprocessed.fastq,A4062G,K1354K,2C: K257K; A771G
+NW3_mNGS,polyprotein P1373P,4670,1.14,P1373P,polyprotein,T4119C,T to C,synonymous SNV,175,N10-203B_S302_L001_R1_001.preprocessed.fastq,T4119C,P1373P,2C: P276P; T828C
+NW3_mNGS,polyprotein D1392Y,4725,1.16,D1392Y,polyprotein,G4174T,G to T,nonsynonymous SNV,173,N10-203B_S302_L001_R1_001.preprocessed.fastq,G4174T,D1392Y,2C: D295Y; G883T
+NW3_mNGS,polyprotein H1394H,4733,1.14,H1394H,polyprotein,T4182C,T to C,synonymous SNV,177,N10-203B_S302_L001_R1_001.preprocessed.fastq,T4182C,H1394H,2C: H297H; T891C
+NW3_mNGS,polyprotein N1396Y,4737,1.12,N1396Y,polyprotein,A4186T,A to T,complex,179,N10-203B_S302_L001_R1_001.preprocessed.fastq,A4186T,N1396Y,2C: N299Y; A895T
+NW3_mNGS,polyprotein N1396I,4738,1.08,N1396I,polyprotein,A4187T,A to T,complex,185,N10-203B_S302_L001_R1_001.preprocessed.fastq,A4187T,N1396I,2C: N299I; A896T
+NW3_mNGS,polyprotein V1397I,4740,1.09,V1397I,polyprotein,G4189A,G to A,nonsynonymous SNV,184,N10-203B_S302_L001_R1_001.preprocessed.fastq,G4189A,V1397I,2C: V300I; G898A
+NW3_mNGS,polyprotein T1416I,4798,1.12,T1416I,polyprotein,C4247T,C to T,nonsynonymous SNV,179,N10-203B_S302_L001_R1_001.preprocessed.fastq,C4247T,T1416I,2C: T319I; C956T
+NW3_mNGS,polyprotein S1421P,4812,1.81,S1421P,polyprotein,T4261C,T to C,nonsynonymous SNV,166,N10-203B_S302_L001_R1_001.preprocessed.fastq,T4261C,S1421P,2C: S324P; T970C
+NW3_mNGS,polyprotein D1433D,4850,16.28,D1433D,polyprotein,C4299T,C to T,synonymous SNV,172,N10-203B_S302_L001_R1_001.preprocessed.fastq,C4299T,D1433D,3A: D6D; C18T
+NW3_mNGS,polyprotein L1450L,4901,1.15,L1450L,polyprotein,G4350A,G to A,synonymous SNV,174,N10-203B_S302_L001_R1_001.preprocessed.fastq,G4350A,L1450L,3A: L23L; G69A
+NW3_mNGS,polyprotein L1451L,4904,1.18,L1451L,polyprotein,C4353A,C to A,synonymous SNV,169,N10-203B_S302_L001_R1_001.preprocessed.fastq,C4353A,L1451L,3A: L24L; C72A
+NW3_mNGS,polyprotein K1452N,4907,1.12,K1452N,polyprotein,A4356T,A to T,nonsynonymous SNV,178,N10-203B_S302_L001_R1_001.preprocessed.fastq,A4356T,K1452N,3A: K25N; A75T
+NW3_mNGS,polyprotein M1503I,5060,5.92,M1503I,polyprotein,G4509C,G to C,nonsynonymous SNV,152,N10-203B_S302_L001_R1_001.preprocessed.fastq,G4509C,M1503I,3A: M76I; G228C
+NW3_mNGS,polyprotein K1506T,5068,6.11,K1506T,polyprotein,A4517C,A to C,nonsynonymous SNV,131,N10-203B_S302_L001_R1_001.preprocessed.fastq,A4517C,K1506T,3A: K79T; A236C
+NW3_mNGS,polyprotein Q1512Q,5087,2.16,Q1512Q,polyprotein,A4536G,A to G,synonymous SNV,139,N10-203B_S302_L001_R1_001.preprocessed.fastq,A4536G,Q1512Q,3A: Q85Q; A255G
+NW3_mNGS,polyprotein P1514L,5092,2.76,P1514L,polyprotein,C4541T,C to T,nonsynonymous SNV,145,N10-203B_S302_L001_R1_001.preprocessed.fastq,C4541T,P1514L,3B: P2L; C5T
+NW3_mNGS,polyprotein T1539T,5168,1.28,T1539T,polyprotein,T4617C,T to C,synonymous SNV,156,N10-203B_S302_L001_R1_001.preprocessed.fastq,T4617C,T1539T,3C: T4T; T12C
+NW3_mNGS,polyprotein S1576Y,5278,1.23,S1576Y,polyprotein,C4727A,C to A,nonsynonymous SNV,163,N10-203B_S302_L001_R1_001.preprocessed.fastq,C4727A,S1576Y,3C: S41Y; C122A
+NW3_mNGS,polyprotein I1589I,5318,7.22,I1589I,polyprotein,T4767C,T to C,synonymous SNV,180,N10-203B_S302_L001_R1_001.preprocessed.fastq,T4767C,I1589I,3C: I54I; T162C
+NW3_mNGS,polyprotein L1605L,5366,1.08,L1605L,polyprotein,A4815G,A to G,synonymous SNV,185,N10-203B_S302_L001_R1_001.preprocessed.fastq,A4815G,L1605L,3C: L70L; A210G
+NW3_mNGS,polyprotein T1608T,5375,1.56,T1608T,polyprotein,A4824T,A to T,synonymous SNV,192,N10-203B_S302_L001_R1_001.preprocessed.fastq,A4824T,T1608T,3C: T73T; A219T
+NW3_mNGS,polyprotein L1629L,5438,3.92,L1629L,polyprotein,A4887G,A to G,synonymous SNV,204,N10-203B_S302_L001_R1_001.preprocessed.fastq,A4887G,L1629L,3C: L94L; A282G
+NW3_mNGS,polyprotein M1648T,5494,2.91,M1648T,polyprotein,T4943C,T to C,nonsynonymous SNV,206,N10-203B_S302_L001_R1_001.preprocessed.fastq,T4943C,M1648T,3C: M113T; T338C
+NW3_mNGS,polyprotein V1684V,5603,2.19,V1684V,polyprotein,C5052A,C to A,synonymous SNV,183,N10-203B_S302_L001_R1_001.preprocessed.fastq,C5052A,V1684V,3C: V149V; C447A
+NW3_mNGS,polyprotein K1710R,5680,1.21,K1710R,polyprotein,A5129G,A to G,nonsynonymous SNV,165,N10-203B_S302_L001_R1_001.preprocessed.fastq,A5129G,K1710R,3C: K175R; A524G
+NW3_mNGS,polyprotein S1722C,5715,3.12,S1722C,polyprotein,A5164T,A to T,nonsynonymous SNV,128,N10-203B_S302_L001_R1_001.preprocessed.fastq,A5164T,S1722C,3D: S5C; A13T
+NW3_mNGS,polyprotein T1788S,5913,1.01,T1788S,polyprotein,A5362T,A to T,nonsynonymous SNV,99,N10-203B_S302_L001_R1_001.preprocessed.fastq,A5362T,T1788S,3D: T71S; A211T
+NW3_mNGS,polyprotein N1790K,5921,1,N1790K,polyprotein,C5370A,C to A,nonsynonymous SNV,100,N10-203B_S302_L001_R1_001.preprocessed.fastq,C5370A,N1790K,3D: N73K; C219A
+NW3_mNGS,polyprotein A1794A,5933,1.16,A1794A,polyprotein,A5382G,A to G,synonymous SNV,86,N10-203B_S302_L001_R1_001.preprocessed.fastq,A5382G,A1794A,3D: A77A; A231G
+NW3_mNGS,polyprotein L1803F,5958,2.13,L1803F,polyprotein,C5407T,C to T,nonsynonymous SNV,94,N10-203B_S302_L001_R1_001.preprocessed.fastq,C5407T,L1803F,3D: L86F; C256T
+NW3_mNGS,polyprotein L1805V,5964,2.27,L1805V,polyprotein,C5413G,C to G,nonsynonymous SNV,88,N10-203B_S302_L001_R1_001.preprocessed.fastq,C5413G,L1805V,3D: L88V; C262G
+NW3_mNGS,polyprotein T1809T,5978,1.1,T1809T,polyprotein,C5427A,C to A,synonymous SNV,91,N10-203B_S302_L001_R1_001.preprocessed.fastq,C5427A,T1809T,3D: T92T; C276A
+NW3_mNGS,polyprotein L1818L,6003,1.09,L1818L,polyprotein,T5452C,T to C,synonymous SNV,92,N10-203B_S302_L001_R1_001.preprocessed.fastq,T5452C,L1818L,3D: L101L; T301C
+NW3_mNGS,polyprotein T1821I,6013,1.14,T1821I,polyprotein,C5462T,C to T,nonsynonymous SNV,88,N10-203B_S302_L001_R1_001.preprocessed.fastq,C5462T,T1821I,3D: T104I; C311T
+NW3_mNGS,polyprotein P1826A,6027,1.18,P1826A,polyprotein,C5476G,C to G,complex,85,N10-203B_S302_L001_R1_001.preprocessed.fastq,C5476G,P1826A,3D: P109A; C325G
+NW3_mNGS,polyprotein P1826L,6028,1.19,P1826L,polyprotein,C5477T,C to T,complex,84,N10-203B_S302_L001_R1_001.preprocessed.fastq,C5477T,P1826L,3D: P109L; C326T
+NW3_mNGS,polyprotein S1832I,6046,1.04,S1832I,polyprotein,G5495T,G to T,nonsynonymous SNV,96,N10-203B_S302_L001_R1_001.preprocessed.fastq,G5495T,S1832I,3D: S115I; G344T
+NW3_mNGS,polyprotein L1911L,6284,3.38,L1911L,polyprotein,G5733A,G to A,synonymous SNV,148,N10-203B_S302_L001_R1_001.preprocessed.fastq,G5733A,L1911L,3D: L194L; G582A
+NW3_mNGS,polyprotein T1933T,6350,1.45,T1933T,polyprotein,T5799C,T to C,synonymous SNV,138,N10-203B_S302_L001_R1_001.preprocessed.fastq,T5799C,T1933T,3D: T216T; T648C
+NW3_mNGS,polyprotein F1975F,6476,20.45,F1975F,polyprotein,C5925T,C to T,synonymous SNV,132,N10-203B_S302_L001_R1_001.preprocessed.fastq,C5925T,F1975F,3D: F258F; C774T
+NW3_mNGS,polyprotein L1980I,6489,1.39,L1980I,polyprotein,C5938A,C to A,complex,144,N10-203B_S302_L001_R1_001.preprocessed.fastq,C5938A,L1980I,3D: L263I; C787A
+NW3_mNGS,polyprotein L1980R,6490,1.39,L1980R,polyprotein,T5939G,T to G,complex,144,N10-203B_S302_L001_R1_001.preprocessed.fastq,T5939G,L1980R,3D: L263R; T788G
+NW3_mNGS,polyprotein T2009N,6577,1.63,T2009N,polyprotein,C6026A,C to A,nonsynonymous SNV,123,N10-203B_S302_L001_R1_001.preprocessed.fastq,C6026A,T2009N,3D: T292N; C875A
+NW3_mNGS,polyprotein N2017N,6602,8.04,N2017N,polyprotein,C6051T,C to T,synonymous SNV,112,N10-203B_S302_L001_R1_001.preprocessed.fastq,C6051T,N2017N,3D: N300N; C900T
+NW3_mNGS,polyprotein I2025I,6626,1.9,I2025I,polyprotein,A6075C,A to C,synonymous SNV,105,N10-203B_S302_L001_R1_001.preprocessed.fastq,A6075C,I2025I,3D: I308I; A924C
+NW3_mNGS,polyprotein L2026I,6627,1.85,L2026I,polyprotein,C6076A,C to A,nonsynonymous SNV,108,N10-203B_S302_L001_R1_001.preprocessed.fastq,C6076A,L2026I,3D: L309I; C925A
+NW3_mNGS,polyprotein G2043V,6679,1,G2043V,polyprotein,G6128T,G to T,nonsynonymous SNV,100,N10-203B_S302_L001_R1_001.preprocessed.fastq,G6128T,G2043V,3D: G326V; G977T
+NW3_mNGS,polyprotein L2068W,6754,1.05,L2068W,polyprotein,T6203G,T to G,nonsynonymous SNV,95,N10-203B_S302_L001_R1_001.preprocessed.fastq,T6203G,L2068W,3D: L351W; T1052G
+NW3_mNGS,polyprotein I2082T,6796,1.6,I2082T,polyprotein,T6245C,T to C,nonsynonymous SNV,125,N10-203B_S302_L001_R1_001.preprocessed.fastq,T6245C,I2082T,3D: I365T; T1094C
+NW3_mNGS,polyprotein P2096P,6839,3.01,P2096P,polyprotein,A6288T,A to T,synonymous SNV,166,N10-203B_S302_L001_R1_001.preprocessed.fastq,A6288T,P2096P,3D: P379P; A1137T
+NW3_mNGS,polyprotein E2115E,6896,1.06,E2115E,polyprotein,A6345G,A to G,synonymous SNV,188,N10-203B_S302_L001_R1_001.preprocessed.fastq,A6345G,E2115E,3D: E398E; A1194G
+NW3_mNGS,polyprotein V2130V,6941,1.19,V2130V,polyprotein,T6390C,T to C,synonymous SNV,168,N10-203B_S302_L001_R1_001.preprocessed.fastq,T6390C,V2130V,3D: V413V; T1239C
+NW3_mNGS,polyprotein S2132S,6947,1.31,S2132S,polyprotein,A6396G,A to G,synonymous SNV,153,N10-203B_S302_L001_R1_001.preprocessed.fastq,A6396G,S2132S,3D: S415S; A1245G
+NW3_mNGS,polyprotein H2139L,6967,1.65,H2139L,polyprotein,A6416T,A to T,nonsynonymous SNV,121,N10-203B_S302_L001_R1_001.preprocessed.fastq,A6416T,H2139L,3D: H422L; A1265T
+NW3_mNGS,polyprotein I2157T,7021,1.54,I2157T,polyprotein,T6470C,T to C,nonsynonymous SNV,65,N10-203B_S302_L001_R1_001.preprocessed.fastq,T6470C,I2157T,3D: I440T; T1319C
+NW3_mNGS,polyprotein Q170*,1059,1.15,Q170*,polyprotein,C508T,C to T,stopgain,174,N10-203B_S302_L001_R1_001.preprocessed.fastq,C508T,Q170*,1B: Q101*; C301T
+NW3_mNGS,polyprotein S591*,2323,1.3,S591*,polyprotein,C1772A,C to A,stopgain,77,N10-203B_S302_L001_R1_001.preprocessed.fastq,C1772A,S591*,1D: S25*; C74A
+NW3_mNGS,polyprotein R620*,2409,1.01,R620*,polyprotein,A1858T,A to T,stopgain,99,N10-203B_S302_L001_R1_001.preprocessed.fastq,A1858T,R620*,1D: R54*; A160T
+NW3_mNGS,polyprotein W819*,3007,1.01,W819*,polyprotein,G2456A,G to A,stopgain,99,N10-203B_S302_L001_R1_001.preprocessed.fastq,G2456A,W819*,1D: W253*; G758A
+NW3_mNGS,polyprotein G860*,3129,2.02,G860*,polyprotein,G2578T,G to T,stopgain,99,N10-203B_S302_L001_R1_001.preprocessed.fastq,G2578T,G860*,2A: G7*; G19T
+NW3_mNGS,polyprotein G960*,3429,1.59,G960*,polyprotein,G2878T,G to T,stopgain,63,N10-203B_S302_L001_R1_001.preprocessed.fastq,G2878T,G960*,2A: G107*; G319T
+NW3_mNGS,polyprotein Y1835*,6056,1.04,Y1835*,polyprotein,C5505A,C to A,stopgain,96,N10-203B_S302_L001_R1_001.preprocessed.fastq,C5505A,Y1835*,3D: Y118*; C354A
+NW3_mNGS,polyprotein Y2066*,6749,1.03,Y2066*,polyprotein,T6198A,T to A,stopgain,97,N10-203B_S302_L001_R1_001.preprocessed.fastq,T6198A,Y2066*,3D: Y349*; T1047A
+NW3_mNGS,polyprotein K2159*,7026,2.33,K2159*,polyprotein,A6475T,A to T,stopgain,43,N10-203B_S302_L001_R1_001.preprocessed.fastq,A6475T,K2159*,3D: K442*; A1324T
