@@ -4,7 +4,7 @@ Supplemental Material of the article "Within-host rhinovirus evolution in upper 
 Detailed summary of the metagenomic analysis performed with Revica (https://github.com/greninger-lab/revica). 
 
 **LAVA_dataframes**
-LAVA pipeline (https://github.com/michellejlin/lava) results for the detection of intra-host single nucleotide variant (iSNV) with a minimum allele frequency (MAF) of 10% in the positions with a minimum sequence depth of coverage of 30X
+LAVA pipeline (https://github.com/greninger-lab/lava/tree/Lava_Slippage-Patch) results for the detection of intra-host single nucleotide variant (iSNV) with a minimum allele frequency (MAF) of 10% in the positions with a minimum sequence depth of coverage of 30X
 
 **Comparison_PCR_mNGS**
 Comparatison of iSNV detection with LAVA in samples sequenced by mNGS and amplicon-based.
