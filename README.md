@@ -1,7 +1,40 @@
 Supplemental Material of the article "Within-host rhinovirus evolution in upper and lower respiratory tract highlights capsid variability and mutation-independent compartmentalization"
 
-**HRV_SupFiles**
-Breakdown of most tables and figures and analysis for the project including, allignments, deepmutational scanning, epitope and interpentamer analysis, surface area accessiblity and protein structure and figure modeling. Each subdirectory has a readme discussing specific steps
+**Figure_Generation.Rmd**
+Scripts to generate analysis and figures for most of paper: Firgure 1, 2, S3, S5, S7, S8
+
+**1_AYM_All_Dataframes**
+Script to combine all dataframes to generate Table S2
+
+**Alignments**
+Fasta allignments done through HHpred of RV A, B, and C and epitopes
+
+**Deep_Mutation**
+Deepmutational script for alligning fastas and mapping deep mutational 4GB3 to 1AYMN capsid.  
+
+**Epitopes**
+Contains dataframes and maps epitope positions to each RV capsid.
+
+**Interpentamer_Sites**
+Maps interpentameter positions to each RV capsid.
+
+**MAF_vs_SASA**
+Maps surface area accecibility to RV A to generate surface area analysis and Figure 3. All pymol files are contained in directory.
+
+**mNGS_PCR**
+Script to combine and reformate data to generate figure S1.
+
+**RV_LAVA_DATAFRAMES**
+Combines all lava output dataframes together.
+
+**Structure_Protein**
+Annotates structure of iSNVs within the capside using EMBOSS
+
+**Surface_Exposure**
+Annotates position of iSNVs within the capside using viperDB
+
+**viperdb_info**
+viperDB dataframes
 
 **Microbiome_analysis**
 Microbiome characterization in upper and lower respiratory tract samples from immunocompromised patients during HRV infection to evaluate cross-contamination. 
