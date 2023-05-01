@@ -1,0 +1,955 @@
+---
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+#Lava Output Graph Generation
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+library(tidyverse)
+library(gridExtra)
+library(stringr)
+library(ggrepel)
+library(reshape2)
+library(gggenes)
+library(ggsci)
+library(ggpmisc)
+library(ggpubr)
+```
+
+```{r dataread, message=FALSE, warning=FALSE, include=FALSE}
+# read visualization csv
+
+mat_peptides <- read_csv('/Users/administrator/Downloads/InocCDV/S09/Final_9/all_files/mat_peptides_additions.txt', col_names = c("gene", "start", "end", "numb_nuc"))
+#mat_peptides <- read_csv('/Users/administrator/Downloads/InocCDV/S09/Final_9_Complex_Fixed/all_files/mat_peptides_additions.txt', col_names = c("gene", "start", "end", "numb_nuc"))
+
+
+mat_peptides <- mat_peptides[,-4]
+
+colnames(mat_peptides)[2:3] <- c("xstart", "xend")
+
+mat_peptides$ystart <- 0
+mat_peptides$yend <- 10
+
+mat_pep_x <- melt(mat_peptides[,-(4:5)], id.vars = c('gene'), variable.name = c('xjunk'), value.name = c('x'))[,-2]
+
+mat_pep_y <- melt(mat_peptides[,-(2:3)], id.vars = c('gene'), variable.name = c('yjunk'), value.name = c('y'))[,-2]
+
+datapoly <- merge(mat_pep_x, mat_pep_y, by = c("gene"))
+
+plot_title_names <- read_csv("/Users/administrator/Downloads/InocCDV/S10/metadata_plot_names.csv")
+
+shading_text <- "Red shading indicates coverage less than 10"
+
+```
+
+```{r}
+scale_coverage <- function(x){
+  max_cov <- max(x$cov)
+  x <- x %>% mutate(percent_cov = unlist(lapply(x$cov, function(x){(x/max_cov)*100})))
+}
+```
+
+```{r}
+check_val <- function(x, y){ifelse(x<=10,y,-1)}
+```
+
+```{r}
+previous <- function(x){
+  x <- x %>% mutate(below_ten = ifelse(x$cov<=10, x$position,NA))
+}
+```
+
+```{r}
+read_coverage <- function(base,sample){
+  #coverage = read.csv(paste0("/Users/administrator/Downloads/InocCDV/",base,"/Final_1_Complex_Fixed/genomecov/",sample,".fastq.genomecov"), sep = "\t",  header = FALSE)
+  coverage = read.csv(paste0("/Users/administrator/Downloads/InocCDV/",base,"/Final_9/genomecov/",sample,".fastq.genomecov"), sep = "\t",  header = FALSE)
+
+    
+  # get rid of crappy header parse, select all read info
+  coverage <- coverage[c(2:dim(coverage)[1]),]
+  # give header names
+  
+  names(coverage) <- c("samples", "position", "cov")
+  coverage$samples <- sample
+  coverage$avg <- round(mean(coverage$cov),0)
+  coverage$max <- max(coverage$cov)
+  coverage <- scale_coverage(coverage)
+  coverage$below_ten <- previous(coverage)
+}
+```
+
+```{r}
+bind_cov <- function(base,samples){
+  if (length(samples)==2){
+    cov <- rbind(read_coverage(base,samples[1]), read_coverage(base,samples[2]))
+  } else if (length(samples)==3){
+    cov <- rbind(read_coverage(base,samples[1]), read_coverage(base,samples[2]), read_coverage(base,samples[3]))
+  } else if (length(samples)==4){
+    cov <- rbind(read_coverage(base,samples[1]), read_coverage(base,samples[2]), read_coverage(base,samples[3]), read_coverage(base,samples[4]))
+  }
+}
+```
+
+```{r}
+
+get_poor_cov <- function(x){
+  y <- c(-Inf)
+  for (i in seq(1, dim(x)[1])){
+    #print(x[i,7])
+
+    if (x[i,7] ==1){
+      #print(y)
+      #print(x[i,7])
+      y <- append(y, x[i,7])
+      }
+    else if (x[i,7] != dim(x)[1] & x[i-1,7] != -1 & x[i+1,7] == -1 & x[i,7] != -1){
+      #print(y)
+      #print(x[i,7])
+      y <- append(y, x[i,7])
+      }
+    else if (x[i,7] != dim(x)[1] & x[i-1,7] == -1 & x[i+1,7] != -1 & x[i,7] != -1){
+      #print(y)
+      #print(x[i,7])
+      y <- append(y, x[i,7])
+      }
+    else if (i == dim(x)[1] & x[i,7] != -1){
+      #print(y)
+      #print(x[i,7])
+      y <- append(y, x[i,7])
+      }
+    #return(y)
+  }
+  y <- append(y,Inf)
+  return(y)
+}
+
+
+
+```
+
+```{r mybarplot, include=FALSE}
+my3barplot <- function(base, samples_order, leg_pos, cap) { 
+#assign(paste0('visualization_', base), read_csv(paste0('/Users/administrator/Downloads/InocCDV/S01/lava_plots/visualization.csv')))
+assign(paste0('visualization_', base), read_csv(paste0('/Users/administrator/Downloads/InocCDV/S09/Final_9/visualization.csv')))
+
+   
+working_df <- get(paste0('visualization_',base))
+
+working_df$samples <- lapply(working_df$Sample, function(x){str_split_fixed(x,"\\.",2)[1]})
+
+working_df$samples <- as.character(working_df$samples)
+
+names(working_df) <- tolower(names(working_df))
+
+i <- 0
+
+viz_graph <- working_df %>% filter((working_df$syn %in% c('nonsynonymous SNV', 'synonymous SNV')) & (working_df$af >= 10) & (working_df$depth > 30))
+
+viz_graph$samples <- factor(viz_graph$samples, levels = samples_order)
+
+coverage3 <- bind_cov(base,samples_order)
+
+    viz_graph %>%  ggplot() +
+
+  geom_segment(mapping=aes(x=below_ten,xend=below_ten,y=0,yend=100), size=0.1, alpha=0.1, color="red", data=transform(coverage3, samples=factor(samples,levels=samples_order))) +
+  geom_area(mapping = aes(x=position,y=percent_cov), alpha=0.1,fill="gray57", data=transform(coverage3, samples=factor(samples,levels=samples_order))) +
+  
+  geom_point(aes(x=position, y=af, color=syn)) +
+  theme_minimal()+
+    
+  geom_label_repel(data = viz_graph %>% filter((viz_graph$syn %in% c('nonsynonymous SNV'))), 
+                   aes(x=position, 
+                       y=af, 
+                       label=paste(change), 
+                       color=syn), 
+            size=4.5,
+            show.legend = F,
+            fill = alpha(c("white"),0.0),
+            label.size = NA,
+            xlim = c(0,7100),
+            ylim = c(0,100),
+  ) +
+    
+  geom_text(data=transform(plot_title_names[which(plot_title_names$sample == base),], samples=factor(samples,levels=samples_order)),
+            aes(label=paste0(`Sample.Identifier`, " Day:", `Day.Collected`),
+                x=6500,
+                y=100),
+            size=4.5,
+            color='black',
+            fontface='bold') +  
+  geom_text(data=transform(coverage3, samples=factor(samples,levels=samples_order)), 
+            aes(label=paste0("Max: ",max, "X"), 
+                x=7000,
+                y=100),
+            size=4.5,
+            color='black',
+            check_overlap = TRUE
+            ) +
+  geom_vline(aes(xintercept=0), color="black") +
+  geom_hline(aes(yintercept=0), color="black") +
+    
+  facet_wrap(.~samples, ncol = 1, strip.position = "top") +
+    
+              geom_gene_arrow(data = mat_peptides,
+                 aes(xmin=xstart,
+                     xmax=xend,
+                     y=-4
+                     ), panel = "SRR8356906",
+                 arrowhead_height = unit(8, "mm"),
+                 arrowhead_width = unit(4, "mm"),
+                 arrow_body_height = unit(8, "mm"),
+                 show.legend = F, fill='gray57') +
+      
+        geom_gene_label(data = mat_peptides,
+                  aes(label=gene,
+                      xmin=xstart, 
+                      xmax=xend, 
+                      y=-4
+                      ), panel = "SRR8356906",
+                  align = "left",
+                  color="white") +
+    
+  theme(strip.background = element_blank(), strip.placement = "inside", strip.text.x = element_blank(), axis.title.x=element_blank(), axis.title.y=element_blank(), plot.title = element_text(face="bold", vjust = -7), panel.margin.y = unit(-0.5, "lines"),axis.text=element_text(size=12)) +
+
+      labs(title = paste0("Patient ", head(plot_title_names[which(plot_title_names$sample == base),],n=1)$sample, "\n",
+                      "HRV-",
+                      head(plot_title_names[which(plot_title_names$sample == base),],n=1)$Serotype), 
+       x = "Position", 
+       y = "Allele Frequency",
+       caption = cap) +
+  scale_color_startrek(labels = c("Non Synonymous", "Synonymous")) +
+  #guides(color = guide_legend("Mutation:", nrow=2)) +
+  theme(
+    #legend.position=leg_pos,
+    
+    #legend.justification= c(.9,0),
+    
+    #legend.box = "horizontal", 
+    panel.grid.minor = element_blank(),
+    plot.caption = element_text(face = "italic", hjust = 0),  
+    #legend.title=element_text(size=14),
+    #legend.text=element_text(size=14),
+    #legend.margin=margin(-20, -50, 0, 0),
+    #legend.spacing.x = unit(0, 'mm')) +
+  ) + 
+    
+  xlim(c(0,7100)) +
+  ylim(c(0,120)) +
+    
+  scale_y_continuous(breaks = c(0,20,40,60,80,100)) 
+    
+  #Does not work for S9
+  #scale_x_continuous(position="top")
+
+}
+
+```
+
+## Figure 1
+
+#S01
+```{r S01, message=FALSE, warning=FALSE, fig.width=10, fig.height=5.5}
+mybarplot("S01", c("SRR8356918", "SRR8356921"), "top", "")
+ggsave("S01.eps", path ="/Users/administrator/Downloads/Test_RV_02_13", device=cairo_ps)
+```
+
+#S02
+```{r S02, message=FALSE, warning=FALSE, fig.width=10, fig.height=5}
+mybarplot("S02", c("SRR8356920", "SRR8356912"), "none", "")
+ggsave("S02.eps", path ="/Users/administrator/Downloads/Larger_Size_1_23_23", device=cairo_ps)
+```
+
+#S03
+```{r S03, message=FALSE, warning=FALSE, fig.width=10, fig.height=5.5}
+mybarplot("S03", c("SRR8356913", "SRR8356917"), "top", "")
+ggsave("S03.eps", path ="/Users/administrator/Downloads/Larger_Size_1_23_23", device=cairo_ps)
+```
+
+#S04
+```{r S04, message=FALSE, warning=FALSE, fig.width=10, fig.height=5}
+mybarplot("S04", c("SRR8356919", "SRR8356908"), "none", "")
+ggsave("S04.eps", path ="/Users/administrator/Downloads/Larger_Size_1_23_23", device=cairo_ps)
+```
+
+#S06
+```{r S06, message=FALSE, warning=FALSE, fig.width=10, fig.height=5.5}
+mybarplot("S06", c("SRR8356929", "SRR8356904"), "top", "")
+ggsave("S06.eps", path ="/Users/administrator/Downloads/Larger_Size_1_23_23", device=cairo_ps)
+```
+
+#S05
+```{r S05, message=FALSE, warning=FALSE, fig.width=10, fig.height=5}
+mybarplot("S05", c("SRR8356930", "SRR8356907"), "none", "")
+ggsave("S05.eps", path ="/Users/administrator/Downloads/Larger_Size_1_23_23", device=cairo_ps)
+```
+
+#S08
+```{r S08, message=FALSE, warning=FALSE, fig.width=10, fig.height=5.5}
+mybarplot("S08", c("SRR8356916","SRR8356905"), "top", "")
+ggsave("S08.eps", path ="/Users/administrator/Downloads/Larger_Size_1_23_23", device=cairo_ps)
+```
+
+#S11
+```{r S11, message=FALSE, warning=FALSE, fig.width=10, fig.height=10.5}
+mybarplot("S11", c("SRR8356906", "SRR8356922", "SRR8356915", "SRR8356923"), "top", " ")
+ggsave("S11.eps", path ="/Users/administrator/Downloads/Larger_Size_1_23_23", device=cairo_ps)
+```
+
+#S07
+```{r S07, message=FALSE, warning=FALSE, fig.width=10, fig.height=8.0}
+mybarplot("S07", c("SRR8356909","SRR8356914","SRR8356910"), "top", "")
+ggsave("S07.eps", path ="/Users/administrator/Downloads/Larger_Size_1_23_23", device=cairo_ps)
+```
+
+#S10
+```{r S10, message=FALSE, warning=FALSE, fig.width=10, fig.height=5.5}
+mybarplot("S10", c("SRR8356911", "SRR8356924"), "top", "")
+ggsave("S10.eps", path ="/Users/administrator/Downloads/Larger_Size_1_23_23", device=cairo_ps)
+```
+
+#S12
+```{r S12, message=FALSE, warning=FALSE, fig.width=10, fig.height=5}
+mybarplot("S12", c("SRR8356928", "SRR8356927"), "none", "")
+ggsave("S12.eps", path ="/Users/administrator/Downloads/Larger_Size_1_23_23", device=cairo_ps)
+```
+
+#S09
+```{r S09, message=FALSE, warning=FALSE, fig.width=10, fig.height=5.5}
+mybarplot("S09", c("SRR8356926","SRR8356925"), "top", "")
+ggsave("S09.eps", path ="/Users/administrator/Downloads/Larger_Size_1_23_23", device=cairo_ps)
+```
+
+#Pymol Capsid Graph
+```{r}
+library(png)
+#img <- readPNG("/Users/administrator/Downloads/InocCDV/chimera/concat_all_more_alpha.png")
+img <- readPNG("/Users/administrator/Downloads/Combined.png")
+
+img_df <- data.frame(passage=c(0,50,100),maf=c(10,50,100))
+```
+
+```{r crys, fig.width=7.5,fig.height=2.2}
+img_df %>%
+  ggplot()+
+  geom_point(aes(x=passage,y=maf,fill=maf)) +
+  annotation_raster(img, xmin = -Inf, xmax = Inf , ymin = -Inf, ymax = Inf) +
+    scale_fill_gradientn(colors = c("yellow", "orange","red"),labels=c(10,100),breaks=c(10,100),name="AF") +
+
+  ylim(c(-11,100)) +
+  xlim(c(0,100)) +
+  #geom_text(aes(x=13.5,y=-11),label="0",color="black",size=5,vjust=1) +
+  #geom_text(aes(x=49.55,y=-11),label="12 - 30",color="black",size=5,vjust=1) +
+  #geom_text(aes(x=86.55,y=-11),label="68+",color="black",size=5,vjust=1) +
+  
+  #geom_label(aes(x=68,y=28),label="VP1",color="gray80",size=4,vjust=1) +
+  #geom_label(aes(x=68,y=21),label="VP2",color="gray60",size=4,vjust=1) +
+  #geom_label(aes(x=68,y=14),label="VP3",color="gray40",size=4,vjust=1) +
+  #geom_label(aes(x=68,y=4),label="V4 Region",color="gray20",size=4,vjust=1) +
+    
+  theme(
+    plot.background = element_rect(color='white', fill = "white"),
+    legend.background = element_rect(fill = "white"),
+    legend.title = element_text(color="black"),
+    legend.text = element_text(colour = "black"),
+    #legend.justification = "left",
+    legend.position = "right",
+    legend.box = "horizontal",
+    legend.key.size = unit(1, 'cm'),
+    axis.line.x = element_line(color="white"),
+    axis.text.y = element_blank(),
+    axis.line.y = element_line(color="white"),
+    axis.ticks = element_blank(),
+    axis.text.x = element_blank(),
+    
+    axis.title.x=element_blank(),
+    axis.title.y=element_blank(),
+    
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.border = element_blank(),
+    panel.background = element_blank()
+    
+  )
+
+ggsave("combinedPeptide.eps", path ="/Users/administrator/Downloads/", device=cairo_ps)
+ggsave("combinedPeptide.pdf", path ="/Users/administrator/Downloads/")
+
+```
+
+# MAF vs SASA
+```{r}
+
+SA <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/MAF_vs_SASA/SASA_Annotated.csv')
+
+a <- ggplot(SA,aes(x=SurfaceArea, y=AF)) +
+   geom_point(aes(color = Group)) +
+   theme_minimal() +
+   theme(axis.line = element_line(colour = "black"), panel.border = element_rect(colour = "black", fill=NA, size=.5)) +
+   theme(plot.title = element_text(hjust = 0.5)) +
+   labs(shape = "chain") +
+   geom_smooth(method = "lm", se = FALSE, linetype = "dashed", color = "grey") +
+   facet_grid( ~ VP) +
+   stat_regline_equation(label.y=95) +
+   stat_regline_equation(label.y=85,aes(label = ..rr.label..)) +
+   xlab("SASA (%)") + ylab("AF (%)")
+
+print(a)
+
+SA_1 <- subset(SA, VP == 1)
+lm(SurfaceArea ~ AF,SA_1)
+
+SA_2 <- subset(SA, VP == 2)
+lm(SurfaceArea ~ AF,SA_2)
+
+SA_3 <- subset(SA, VP == 3)
+lm(SurfaceArea ~ AF,SA_3)
+
+summary(lm(SurfaceArea ~ AF,SA_1))
+summary(lm(SurfaceArea ~ AF,SA_2))
+summary(lm(SurfaceArea ~ AF,SA_3))
+
+ggsave("SASA.pdf", width=12, height=4, dpi=300,, path ="/Users/administrator/Downloads/")
+ggsave("SASA.eps", width=12, height=4, dpi=300,, path ="/Users/administrator/Downloads/")
+
+```
+#PCR vs mNGS Graphs
+```{r}
+
+#S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/mNGS_PCR/Reformated/BAL1B_BAL1B_2.csv')
+#S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/mNGS_PCR/Reformated/NW1PCR_NW1mNGS.csv')
+#S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/mNGS_PCR/Reformated/NW8PCR_NW8mNGS.csv')
+S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/mNGS_PCR/Reformated/BAL10PCR_BAL10mNGS.csv')
+
+ggplot(data=S1_DataFrame, aes(x=AF_1, y=AF_2)) +
+  geom_point()  +
+  theme_minimal() +
+  theme(
+    axis.line = element_line(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.title = element_text(hjust = 0.5)) +
+  geom_smooth(method = "lm",linetype = "dashed", color = "black",se = FALSE)+
+  #labs(x = "First PCR tiling Allele Frequency (%)", y = "Second PCR tiling Allele Frequency (%)")+
+  #labs(x = "First PCR tiling Allele Frequency (%)", y = "mNGS Allele Frequency (%)")+
+  #labs(x = "First PCR tiling Allele Frequency (%)", y = "mNGS Allele Frequency (%)")+
+  labs(x = "First PCR tiling Allele Frequency (%)", y = "mNGS Allele Frequency (%)")+
+  #ggtitle("S01 BAL1B") +
+  #ggtitle("S01 NW1") +
+  #ggtitle("S08 NW8") +
+  ggtitle("S10 BAL10") +
+  stat_regline_equation(label.y=85,aes(label = ..rr.label..)) 
+ 
+#ggsave("S01-BAL1B_PCR.pdf", width=5, height=5, dpi=300, path ="/Users/administrator/Desktop/HRV_SupFiles/mNGS_PCR/Graphs")
+#ggsave("S01−BAL1B_PCR.eps", width=5, height=5, dpi=300, path ="/Users/administrator/Desktop/HRV_SupFiles/mNGS_PCR/Graphs")
+
+#ggsave("S01-NW1_PCR_NW1mNGS.pdf", width=5, height=5, dpi=300, path ="/Users/administrator/Desktop/HRV_SupFiles/mNGS_PCR/Graphs")
+#ggsave("S01-NW1_PCR_NW1mNGS.eps", width=5, height=5, dpi=300, path ="/Users/administrator/Desktop/HRV_SupFiles/mNGS_PCR/Graphs")
+
+#ggsave("S08-NW8_PCR_NW8mNGS.pdf", width=5, height=5, dpi=300, path ="/Users/administrator/Desktop/HRV_SupFiles/mNGS_PCR/Graphs")
+#ggsave("S08-NW8_PCR_NW8mNGS.eps", width=5, height=5, dpi=300, path ="/Users/administrator/Desktop/HRV_SupFiles/mNGS_PCR/Graphs")
+
+ggsave("S10-BAL10_PCR_BAL10mNGS.pdf", width=5, height=5, dpi=300, path ="/Users/administrator/Desktop/HRV_SupFiles/mNGS_PCR/Graphs")
+ggsave("S10-BAL10_PCR_BAL10mNGS.eps", width=5, height=5, dpi=300, path ="/Users/administrator/Desktop/HRV_SupFiles/mNGS_PCR/Graphs")
+
+```
+#
+```{r}
+
+S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/Rava/mNGS_Vs_PCR/Dataframes/NW1PCR_NW1mNGS.csv')
+
+ggplot(data=S1_DataFrame, aes(x=AF_1, y=AF_2)) +
+  geom_point()  +
+  theme_minimal() +
+  theme(
+    axis.line = element_line(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.title = element_text(hjust = 0.5)) +
+  geom_smooth(method = "lm",linetype = "dashed", color = "black",se = FALSE)+
+  labs(x = "First PCR tiling Allele Frequency (%)", y = "mNGS Allele Frequency (%)")+
+  ggtitle("S01 NW") +
+  #stat_regline_equation(label.y=95) +
+  stat_regline_equation(label.y=85,aes(label = ..rr.label..)) 
+ 
+ggsave("NW1PCR_NW1mNGS.pdf", width=5, height=5, dpi=300, path ="/Users/administrator/Downloads/PCR_mNGS_Comparision")
+ggsave("NW1PCR_NW1mNGS.eps", width=5, height=5, dpi=300, path ="/Users/administrator/Downloads/PCR_mNGS_Comparision")
+
+```
+
+```{r}
+
+S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/Rava/mNGS_Vs_PCR/Dataframes/BAL_009PCR_BAL_009mNGS.csv')
+
+ggplot(data=S1_DataFrame, aes(x=AF_1, y=AF_2)) +
+  geom_point()  +
+  theme_minimal() +
+  theme(
+    axis.line = element_line(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.title = element_text(hjust = 0.5)) +
+  geom_smooth(method = "lm",linetype = "dashed", color = "black",se = FALSE)+
+  labs(x = "First PCR tiling Allele Frequency (%)", y = "mNGS Allele Frequency (%)")+
+  ggtitle("S05 BAL") +
+  #stat_regline_equation(label.y=95) +
+  stat_regline_equation(label.y=85,aes(label = ..rr.label..)) 
+ 
+ggsave("BAL_009PCR_BAL_009mNGS.pdf", width=5, height=5, dpi=300, path ="/Users/administrator/Downloads/PCR_mNGS_Comparision")
+ggsave("BAL_009PCR_BAL_009mNGS.eps", width=5, height=5, dpi=300, path ="/Users/administrator/Downloads/PCR_mNGS_Comparision")
+
+```
+
+```{r}
+
+S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/Rava/mNGS_Vs_PCR/Dataframes/N10_203BPCR_N10_203BmNGS.csv')
+
+ggplot(data=S1_DataFrame, aes(x=AF_1, y=AF_2)) +
+  geom_point()  +
+  theme_minimal() +
+  theme(
+    axis.line = element_line(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.title = element_text(hjust = 0.5)) +
+  geom_smooth(method = "lm",linetype = "dashed", color = "black",se = FALSE)+
+  labs(x = "First PCR tiling Allele Frequency (%)", y = "mNGS Allele Frequency (%)")+
+  ggtitle("S07 N10 203B") +
+  #stat_regline_equation(label.y=95) +
+  stat_regline_equation(label.y=85,aes(label = ..rr.label..)) 
+ 
+ggsave("N10_203BPCR_N10_203BmNGS.pdf", width=5, height=5, dpi=300, path ="/Users/administrator/Downloads/PCR_mNGS_Comparision")
+ggsave("N10_203BPCR_N10_203BmNGS.eps", width=5, height=5, dpi=300, path ="/Users/administrator/Downloads/PCR_mNGS_Comparision")
+
+```
+
+#Graph AF with Deep mutation scanning data
+```{r}
+#S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/DeepMutation.csv')
+#S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/Deep_Mutation/RV_A/RV_A.csv')
+S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/Deep_Mutation/RV_Combo.csv')
+
+ggplot(data=S1_DataFrame, aes(x=AF, y=mut_virus_AVR_MFE_log2)) +
+  geom_point()  +
+  #theme_minimal() +
+  ylim(-5,0) +
+  theme(
+    axis.line = element_line(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.title = element_text(hjust = 0.5)) +
+  geom_smooth(method = "lm",linetype = "dashed", color = "black",se = FALSE)+
+  labs(x = "Allele Frequency (%)", y = "mut_virus_AVR_MFE_log2")+
+  facet_grid( ~ VP) +
+  #facet_grid( ~ Day) +
+  #facet_grid( ~ Time_group) +
+  #facet_grid( ~ Combo) +
+  #ggtitle("S07 N10 203B") +
+  #stat_regline_equation(label.y=95) +
+  #stat_regline_equation(label.y=85,aes(label = ..rr.label..)) 
+  stat_regline_equation(aes(label = ..rr.label..)) 
+  ggsave("DeppMutationDay_NonVIolin.pdf", width=10, height=5, dpi=300, path ="/Users/administrator/Downloads/")
+  ggsave("DeppMutationDay_NonVIolin.eps", width=10, height=5, dpi=300, path ="/Users/administrator/Downloads/")
+ 
+```
+
+#Deep mutation violin plots for iSNVs
+```{r}
+
+library(dplyr)
+
+#S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/Deep_Mutation/RV_A/RV_A.csv')
+#S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/Deep_Mutation/RV_B/RV_B.csv')
+#S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/Deep_Mutation/RV_C/RV_C.csv')
+S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/Deep_Mutation/RV_Combo.csv')
+
+count_data <- function (y){
+  df <- S1_DataFrame(y = min(y) - 0.2, label = length(y))
+  return(df)
+}
+
+S1_DataFrame$VP <- ifelse(S1_DataFrame$VP == 1, "VP1", 
+                 ifelse(S1_DataFrame$VP == 2, "VP2", 
+                        ifelse(S1_DataFrame$VP == 3, "VP3", 
+                               ifelse(S1_DataFrame$VP == 4, "VP4", S1_DataFrame$VP))))
+
+#S1_DataFrame <- subset(S1_DataFrame, iSNP == "Yes" & BlosumScore >= 10 | iSNP == "No")
+#S1_DataFrame <- subset(S1_DataFrame, BlosumScore <= 1 )
+
+ggplot(data=S1_DataFrame, aes(x=iSNV, y=MAX_mut_virus_AVR_MFE_log2)) +
+  
+  geom_violin(aes(fill=iSNV),linewidth=0) +
+  
+  geom_boxplot(width=0.1, color="black",outlier.shape = NA) +
+  
+  stat_summary(fun.data = function(x){ data.frame(y = max(x), label = paste('N =',length(x))) },
+               geom = "text", hjust = -0.2, vjust = 2, size = 4) +
+  #add N =
+  
+  theme_minimal() +
+  
+  theme(
+    axis.line = element_line(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.title = element_text(hjust = 0.5),
+    legend.position = "none") +
+  
+  facet_grid( ~ VP) +
+  
+  #stat_summary(position = position_dodge(width = 0.75)) +
+  
+  stat_compare_means()+
+  
+  ylab('MFE(log2)')
+  #change  number to vp region
+
+  
+  
+  #geom_text(aes(label = n), data = summ)
+  
+  #stat_compare_means(method = "t.test")
+  
+    
+  
+  ggsave("violinplot_Stats_AVG_RV__BLOSUM_1.pdf", width=10, height=5, dpi=300, path ="/Users/administrator/Downloads/")
+  ggsave("violinplot_Stats_AVG_RV__BLOSUM_1.eps", width=10, height=5, dpi=300, path ="/Users/administrator/Downloads/")
+ 
+```
+
+#Graph MFE VS Blossom Score
+```{r}
+#S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/DeepMutation.csv')
+S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/Deep_Mutation/RV_A/RV_A.csv')
+
+ggplot(data=S1_DataFrame, aes(x=BlosumScore, y=MAX_mut_virus_AVR_MFE_log2)) +
+  geom_point()  +
+  #theme_minimal() +
+  ylim(-5,0) +
+  theme(
+    axis.line = element_line(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.title = element_text(hjust = 0.5)) +
+  geom_smooth(method = "lm",linetype = "dashed", color = "black",se = FALSE)+
+  labs(x = "Blossom Score", y = "mut_virus_AVR_MFE_log2")+
+  #facet_grid( ~ VP) +
+  #facet_grid( ~ Day) +
+  #facet_grid( ~ Time_group) +
+  #facet_grid( ~ Combo) +
+  #ggtitle("S07 N10 203B") +
+  #stat_regline_equation(label.y=95) +
+  #stat_regline_equation(label.y=85,aes(label = ..rr.label..)) 
+  stat_regline_equation(aes(label = ..rr.label..)) 
+  ggsave("MFE_VS_Blossom_Score.pdf", width=10, height=5, dpi=300, path ="/Users/administrator/Downloads/")
+  ggsave("MFE _VS_Blossom_Score.eps", width=10, height=5, dpi=300, path ="/Users/administrator/Downloads/")
+ 
+```
+
+#Chi Square Epitope
+```{r}
+
+S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/Epitopes/Epitope_A_B_C.csv')
+colnames(S1_DataFrame)[13] = "OneAYM_Position_Relative"
+colnames(S1_DataFrame)[20] = "OneAYM_Position_Annotated"
+print(S1_DataFrame)
+S2_DataFrame <- subset(S1_DataFrame, VP_x == "1" | VP_x == "2" | VP_x == "3" | VP_x == "4")
+
+S3_DataFrame <- subset(S1_DataFrame, is.na(VP_x))
+
+S4_DataFrame <- subset(S2_DataFrame, is.na(residue))
+observed_counts_Yes_No_Epitope <- table(S4_DataFrame$OneAYM_Position_Relative)
+
+observed_counts_Yes_Epitope <- table(S2_DataFrame$residue)
+print(observed_counts_Yes_Epitope)
+
+observed_counts_No <- table(S3_DataFrame$OneAYM_Position_Annotated)
+print(observed_counts_No)
+
+as.integer(nrow(observed_counts_Yes_Epitope))
+as.integer(nrow(observed_counts_Yes_No_Epitope))
+as.integer(nrow(observed_counts_No))
+
+```
+
+#Chi Square Structure
+```{r}
+#x <- matrix(c(3, 20, 55, 774), byrow = TRUE, 2, 2)
+x <- matrix(c(3, 20, 46, 783), byrow = TRUE, 2, 2)
+
+ chisq.test(x)
+ 
+ chisq.test(x, correct = FALSE)
+```
+
+#Structure VS Residue
+```{r}
+library(ggpubr)
+
+S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/Structure_Protein/Annotated_Structure.csv')
+
+S2_DataFrame <- subset(S1_DataFrame, iSNV == "Yes")
+S3_DataFrame <- subset(S1_DataFrame, iSNV == "No")
+
+observed_counts_Yes <- table(S2_DataFrame$Structure)
+print(observed_counts_Yes)
+
+Yes_Total <- ( 18 + 8 + 15 + 14 )
+
+observed_counts_No <- table(S3_DataFrame$Structure)
+print(observed_counts_No)
+
+No_Total <- (193 + 169  + 241 + 194 )
+
+colors <- c("#06141F", "#3D4F7D", "#CD4F38", "#EAD890")
+
+ ggplot(S1_DataFrame, aes(x = Structure, fill = Structure)) +
+  theme_minimal() +
+  geom_bar() +
+  facet_wrap(~iSNV) +
+  theme(legend.position = "none") +
+  scale_fill_manual(values = colors) 
+
+#observed_counts <- table(S1_DataFrame$Structure)
+
+#expected_props <- c(0.25, 0.25, 0.25, 0.25)
+
+#expected_counts <- sum(observed_counts) * expected_props
+
+#chisq.test(observed_counts, p = expected_props)
+ 
+Yes_iSNV <- data.frame(
+  structure =  c("coil", "helix", "strand", "turn"),
+  count = c(18/55, 8/55, 15/55, 14/55)
+)
+
+No_iSNV <- data.frame(
+  structure = c("coil", "helix", "strand", "turn"),
+  count = c(193/797, 169/797, 241/797, 194/797 )
+)
+
+merged_df <- rbind(transform(Yes_iSNV, Group = "Yes_iSNV"), 
+                   transform(No_iSNV, Group = "No_iSNV"))
+
+ggplot(merged_df, aes(x = structure, y = count, fill = Group)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  scale_fill_manual(values = c("#3D4F7D", "#EAD890"), labels = c("With iSNV", "Without iSNV")) +
+  labs(x = "Structure", y = "Frequency") +
+  theme_minimal() +
+  guides(fill = guide_legend(title = ""))
+
+counts <- rbind(Yes_iSNV$count, No_iSNV$count)
+
+chisq.test(counts)
+
+ggsave("Residue_Vs_Structure.pdf", width=10, height=5, dpi=300, path ="/Users/administrator/Downloads/")
+ggsave("Residue_Vs_Structure.eps", width=10, height=5, dpi=300, path ="/Users/administrator/Downloads/")
+
+```
+
+#Chi Square Interpentamer
+```{r}
+#x <- matrix(c(3, 20, 55, 774), byrow = TRUE, 2, 2)
+x <- matrix(c(3, 48, 61, 740), byrow = TRUE, 2, 2)
+
+ chisq.test(x)
+ 
+ chisq.test(x, correct = FALSE)
+```
+
+#Structure position
+```{r}
+library(ggpubr)
+
+#S1_DataFrame <- read.csv(file = '/Users/administrator/Downloads/Surface_Exposure_Annotated_4gb3.csv')
+S1_DataFrame <- read.csv(file = '/Users/administrator/Desktop/HRV_SupFiles/Surface_Exposure/Surface_Exposure_Annotated.CSV')
+
+#S1_DataFrame_A <- subset(S1_DataFrame, Serotype == "A102" | Serotype == "A78" | Serotype == "A39" | Serotype == "A57" | Serotype == "A82" | Serotype == "A58" | Serotype == "A105")
+S1_DataFrame_A <- subset(S1_DataFrame, Serotype_AB == "C")
+
+colnames(S1_DataFrame)[12] = "OneAYM_Position"
+#colnames(S1_DataFrame_A)[12] = "OneAYM_Position"
+#colnames(S1_DataFrame)[9] = "FourGB3_Position"
+#colnames(S1_DataFrame_B)[9] = "FourGB3_Position"
+
+S2_DataFrame <- subset(S1_DataFrame_A, iSNV == "Yes")
+#S3_DataFrame <- subset(S1_DataFrame, iSNV == "No" | Serotype_AB != "A")
+S3_DataFrame <- subset(S1_DataFrame, iSNV == "No" | Serotype_AB != "C")
+
+#S2_DataFrame <- subset(S1_DataFrame_B, iSNV == "Yes")
+#S3_DataFrame <- subset(S1_DataFrame, iSNV == "No")
+
+#counts <- S2_DataFrame %>%
+#  distinct(OneAYM_Position, .keep_all = TRUE) %>%
+  #distinct(FourGB3_Position, .keep_all = TRUE) %>%
+#  group_by(cat) %>%
+  #group_by(struct_pos_y) %>%
+#  summarise(count = n())
+
+#total all
+observed_counts_TotalAll <- table(S1_DataFrame$cat)
+print(observed_counts_TotalAll)
+
+observed_counts_Yes <- table(S2_DataFrame$cat)
+print(observed_counts_Yes)
+
+#core interface    surfin   surfout 
+Yes_Total <- ( 5 + 37 + 0 + 9 )
+
+#Just A
+Yes_Total <- ( 4 + 27 + 0 + 9 )
+
+observed_counts_No <- table(S3_DataFrame$cat)
+#observed_counts_No <- table(S3_DataFrame$struct_pos_y)
+print(observed_counts_No)
+
+#core interface    surfin   surfout 
+No_Total <- (148 + 460 + 15 + 107)
+
+colors <- c("#06141F", "#3D4F7D", "#CD4F38", "#EAD890")
+
+g <- ggplot(S1_DataFrame, aes(x = cat, fill = cat)) +
+  theme_minimal() +
+  geom_bar() +
+  facet_wrap(~iSNV) +
+  theme(legend.position = "none") +
+  scale_fill_manual(values = colors) 
+
+print(g) 
+
+print(Yes_Total)
+
+print(No_Total)
+#observed_counts <- table(S1_DataFrame$Structure)
+
+#expected_props <- c(0.25, 0.25, 0.25, 0.25)
+
+#expected_counts <- sum(observed_counts) * expected_props
+
+#chisq.test(observed_counts, p = expected_props)
+ 
+Yes_iSNV <- data.frame(
+  structure =  c("core", "interface", "surfin", "surfout"),
+  #count = c(7/65, 37/65, 21/65)
+  #All
+  #count = c(5/51, 37/51, 0, 9/51)
+  #Just A
+  count = c(4/51, 27/51, 0, 9/51)
+)
+
+No_iSNV <- data.frame(
+  structure = c("core", "interface", "surfin", "surfout"),
+  count = c(148/730, 460/730, 15/730, 107/730)
+)
+
+merged_df <- rbind(transform(Yes_iSNV, Group = "Yes_iSNV"), 
+                   transform(No_iSNV, Group = "No_iSNV"))
+
+ggplot(merged_df, aes(x = structure, y = count, fill = Group)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  scale_fill_manual(values = c("#3D4F7D", "#EAD890"), labels = c("Without iSNV","With iSNV")) +
+  labs(x = "Structure", y = "Frequency") +
+  theme_minimal() +
+  guides(fill = guide_legend(title = ""))
+
+counts <- rbind(Yes_iSNV$count, No_iSNV$count)
+
+chisq.test(counts)
+
+ggsave("Structure_position.pdf", width=10, height=5, dpi=300, path ="/Users/administrator/Downloads/")
+ggsave("Structure_position.eps", width=10, height=5, dpi=300, path ="/Users/administrator/Downloads/")
+
+#chi square surface vs non surface
+
+iSNV_Yes_Surface_Yes <- counts[1,3] + counts[1,4]
+iSNV_Yes_Surface_No <- counts[1,1] + counts[1,2]
+iSNV_No_Surface_Yes <- counts[2,3] + counts[2,4]
+iSNV_no_Surface_no <- counts[2,1] + counts[2,2]
+
+x <- matrix(c(iSNV_Yes_Surface_Yes, iSNV_Yes_Surface_No, iSNV_No_Surface_Yes, iSNV_no_Surface_no), byrow = TRUE, 2, 2)
+x <- matrix(c(20, 16, 650, 118), byrow = TRUE, 2, 2)
+
+ chisq.test(x)
+ 
+ chisq.test(x, correct = FALSE)
+
+
+2```
+
+#viperdp extract surface information
+```{r}
+
+library(jsonlite)
+library(RCurl)
+library(tidyverse)
+
+pdbs=c("1aym")
+#pdbs=c("4GB3")
+#pos=c("interface","core","surfin","surfout")
+pos=c("interface","surfin","surfout")
+
+for (p in pdbs){
+  # p=pdbs[1]
+  print(p)
+  for (i in pos){
+    # i=pos[1]
+    print(i)
+    
+    df=paste0("https://viperdb.org/APId/testapi3.php?VDB=",p,"&SIC=",i)
+    df=fromJSON(df,flatten = T)
+    
+    a=df$subUnits[["A"]][["datamarker"]] %>% mutate(cat=!!i,subunit="A")
+    b=df$subUnits[["B"]][["datamarker"]] %>% mutate(cat=!!i,subunit="B")
+    c=df$subUnits[["C"]][["datamarker"]] %>% mutate(cat=!!i,subunit="C")
+    d=df$subUnits[["D"]][["datamarker"]] %>% mutate(cat=!!i,subunit="D")
+    
+    df=bind_rows(a,b,c,d)
+    rm(a,b,c,d)
+    ### write as csv, paste in name of pdb and position
+   
+  }
+  write.csv(df, paste0("viperdb_info/",p,"_",pos,".csv"), row.names = FALSE)
+}
+
+pos=c("core")
+
+for (p in pdbs){
+  # p=pdbs[1]
+  print(p)
+  for (i in pos){
+    # i=pos[1]
+    print(i)
+    
+    df=paste0("https://viperdb.org/APId/testapi3.php?VDB=",p,"&SIC=",i)
+    df=fromJSON(df,flatten = T)
+    
+    a=df$subUnits[["A"]][["datamarker"]] %>% mutate(cat=!!i,subunit="A")
+    b=df$subUnits[["B"]][["datamarker"]] %>% mutate(cat=!!i,subunit="B")
+    c=df$subUnits[["C"]][["datamarker"]] %>% mutate(cat=!!i,subunit="C")
+    
+    df=bind_rows(a,b,c)
+    rm(a,b,c)
+    ### write as csv, paste in name of pdb and position
+    
+  }
+  write.csv(df, paste0("viperdb_info/",p,"_",pos,".csv"), row.names = FALSE)
+}
+
+```
