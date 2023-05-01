@@ -1,0 +1,90 @@
+from dna_features_viewer import BiopythonTranslator, GraphicFeature, GraphicRecord
+import matplotlib.pyplot as plt
+import csv
+import numpy as np
+
+#figure2, (bx, bx2) = plt.subplots(
+#    2, 1, figsize=(12, 3), sharex=False, gridspec_kw={"height_ratios": [1, 1]}
+#)
+
+#fig2, (fig, bx) = plt.subplots(
+#    2, 1, figsize=(12, 3), sharex=True, gridspec_kw={"height_ratios": [4, 1]}
+#)
+
+#figure, bx, ax = plt.subplots(2)
+
+#my_feature = GraphicFeature(start=100, end=200, strand=+1, color="#FF0000", label="My Feature", limit=(50, 250))
+#record = GraphicRecord(sequence_length=1000, features=[my_feature])
+class MyCustomTranslator(BiopythonTranslator):
+    def compute_feature_color(self, features):
+        if features.type == "V1":
+            return "red"
+        elif features.type == "V2":
+            return "blue"
+        elif features.type == "V3":
+            return "green"
+        elif features.type == "V4":
+            return "yellow"
+        elif features.type == "V5":
+            return "orange"
+        elif features.type == "V6":
+            return "purple"
+        elif features.type == "V7":
+            return "brown"
+        else:
+            return "gold"
+
+
+    def compute_feature_box_color(self, feature):
+        """Compute a box_color for this feature."""
+        return "auto"
+
+graphic_record = MyCustomTranslator().translate_record("/Users/administrator/Desktop/tprDlocus_2.gb")
+
+zoom_start, zoom_end = 3450, 3978  # coordinates of the "detail"
+graphic_record = graphic_record.crop((zoom_start, zoom_end))
+
+bx, _ = graphic_record.plot(figure_width=7, strand_in_label_threshold=7)
+#bx2, _ = graphic_record.plot(figure_width=7, strand_in_label_threshold=7)
+
+bamfile = "/Users/administrator/Desktop/Matt_G_TP/MattG_SeattleSix_New_030723/GenomeCov_Deletion/P2220168.depth"
+
+import matplotlib.pyplot as plt
+import csv
+
+x = []
+y = []
+
+with open(bamfile, 'r') as tsvfile:
+    tsvreader = csv.reader(tsvfile, delimiter='\t')
+    for row in tsvreader:
+        x.append(float(row[1]))
+        y.append(float(row[2]))
+
+fig, ax = plt.subplots()
+
+ax.plot(x, y,color='darkgreen')
+plt.xlabel("Genome Position")
+plt.ylabel("Read Depth")
+ax = plt.gca()
+ax.set_xlim([150000, 153000])
+ax.set_ylim([0,350])
+ax.fill_between(x, y, color='darkgreen', alpha=0.5)
+#ax.text(152000, 325, '528 Bp Deletion', fontsize=10)
+ax.axvline(x=151315, color='black', linestyle='--', linewidth=1)
+ax.axvline(x=151700, color='black', linestyle='--', linewidth=1)
+ax.annotate('528 Bp Deletion', xy=(151500, 250), xytext=(152000, 325),
+            arrowprops=dict(facecolor='black', shrink=0.05))
+
+ax.figure.savefig("custom_bopython_translator.png")
+bx.figure.savefig("custom_bopython_translator_2.png")
+#figure2.figure.savefig("custom_bopython_translator_3.png")
+#figure, bx, ax = plt.subplots(2)
+
+#plt(ax.figure)
+#plt(bx.figure)
+#plt(fig.figure)
+
+
+plt.show()
+
