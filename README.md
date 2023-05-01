@@ -1,7 +1,7 @@
 Supplemental Material of the article "Within-host rhinovirus evolution in upper and lower respiratory tract highlights capsid variability and mutation-independent compartmentalization"
 
 **Figure_Generation.Rmd**
-Scripts to generate analysis and figures for most of paper: Firgure 1, 2, S3, S5, S7, S8
+Scripts to generate analysis and figures for most of paper: Figure 1, 2, S3, S5, S7, S8
 
 **1_AYM_All_Dataframes**
 Script to combine all dataframes to generate Table S2
