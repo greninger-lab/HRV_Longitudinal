@@ -10,7 +10,7 @@ Script to combine all dataframes to generate Table S2
 Fasta allignments done through HHpred of RV A, B, and C and epitopes
 
 **Deep_Mutation**
-Deepmutational script for alligning fastas and mapping deep mutational 4GB3 to 1AYMN capsid.  
+Deep mutational script for alligning fastas and mapping deep mutational 4GB3 to 1AYMN capsid.  
 
 **Epitopes**
 Contains dataframes and maps epitope positions to each RV capsid.
