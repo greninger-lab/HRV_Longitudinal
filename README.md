@@ -19,7 +19,7 @@ Contains dataframes and maps epitope positions to each RV capsid.
 Maps interpentameter positions to each RV capsid.
 
 **MAF_vs_SASA**
-Maps surface area accecibility to RV A to generate surface area analysis and Figure 3. All pymol files are contained in directory.
+Maps surface area accessibility to RV A to generate surface area analysis and Figure 3. All pymol files are contained in directory.
 
 **mNGS_PCR**
 Script to combine and reformate data to generate figure S1.
